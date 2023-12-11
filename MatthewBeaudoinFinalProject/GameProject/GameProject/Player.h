@@ -17,8 +17,11 @@ private:
     Vec2 start_pos;
     BoxCollider* collider = nullptr;
 
-    float _timeBetweenShots = 0;
+    float _timeBetweenShots = 0.5;
     float _timeBetweenShotsMax = 5;
+
+    float _shotSpeed = 0;
+
 };
 
 #endif // PLAYER_H

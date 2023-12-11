@@ -2,6 +2,7 @@
 #include "UiColorer.h"
 #include "MainMenu.h"
 #include "LevelTimer.h"
+#include "Bullet.h"
 
 void GameRegisterClasses()
 {
@@ -10,4 +11,5 @@ void GameRegisterClasses()
 	REGISTER_TYPECLASS(UiColorer);
 	REGISTER_TYPECLASS(MainMenu);
 	REGISTER_TYPECLASS(LevelTimer);
+	REGISTER_TYPECLASS(Bullet);
 }

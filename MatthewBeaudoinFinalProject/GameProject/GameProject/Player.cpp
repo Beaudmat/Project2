@@ -1,5 +1,7 @@
 #include "GameCore.h"
 #include "Player.h"
+#include "Sprite.h"
+#include "Bullet.h"
 
 #define NDEBUG_PLAYER
 
@@ -30,7 +32,20 @@ void Player::Update()
         Vec2 projectileVector = (*clickPoint) - player;
         projectileVector.Normalize();
 
-        std::cout << "X: " + std::to_string(projectileVector.x) + " Y: " + std::to_string(projectileVector.y) << std::endl;
+        Entity* testEntity = ownerEntity->GetParentScene()->CreateEntity();
+        Bullet* testBullet = (Bullet*)testEntity->CreateComponent("Bullet");
+        testBullet->SetDirection(projectileVector);
+        testBullet->SetSpeed(_shotSpeed);
+        Sprite* testSprite = (Sprite*)testEntity->CreateComponent("Sprite");
+        TextureAsset* testAsset = (TextureAsset*)AssetManager::Get().GetAsset("8475jni3hfji2e8fhu4");
+
+        testSprite->SetTextureAsset(testAsset);
+
+        testEntity->GetTransform().scale.x = 0.2f;
+        testEntity->GetTransform().scale.y = 0.2f;
+
+        testEntity->GetTransform().position = ownerEntity->GetTransform().position;
+        
 
         _timeBetweenShots = _timeBetweenShotsMax;
     }
@@ -93,5 +108,11 @@ void Player::Load(json::JSON& document)
     if (document.hasKey("TimeBetweenShots"))
     {
         _timeBetweenShotsMax = document["TimeBetweenShots"].ToFloat();
+    }
+
+    if (document.hasKey("ShotSpeed"))
+    {
+        std::cout << "FOUND Speed" << std::endl;
+        _shotSpeed = document["ShotSpeed"].ToFloat();
     }
 }

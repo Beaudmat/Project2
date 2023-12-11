@@ -44,7 +44,8 @@
           {
             "ClassName": "Player",
             "ClassData": {
-              "TimeBetweenShots": 1.0
+              "TimeBetweenShots": 1.0,
+              "ShotSpeed": 250.0
             }
           }
         ]

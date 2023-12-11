@@ -183,6 +183,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Game_Register.cpp" />
     <ClCompile Include="LevelTimer.cpp" />
@@ -192,6 +193,7 @@
     <ClCompile Include="UiColorer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="GameCore.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="LevelTimer.h" />
@@ -200,19 +202,15 @@
     <ClInclude Include="UiColorer.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Build\Assets\alien.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Build\Assets\alien.png.asset" />
     <None Include="..\Build\Assets\AssetManager.json" />
     <None Include="..\Build\Assets\AudioSystem.json" />
     <None Include="..\Build\Assets\bahnschrift.ttf.asset" />
+    <None Include="..\Build\Assets\Bullet.png.asset" />
     <None Include="..\Build\Assets\girl.png.asset" />
     <None Include="..\Build\Assets\hitEffect03.wav.asset" />
     <None Include="..\Build\Assets\LoadButton.png.asset" />
     <None Include="..\Build\Assets\PAPYRUS.TTF.asset" />
     <None Include="..\Build\Assets\PlayButton.png.asset" />
-    <None Include="..\Build\Assets\Projectile.png.asset" />
     <None Include="..\Build\Assets\RenderSettings.json" />
     <None Include="..\Build\Assets\SceneManager.json" />
     <None Include="..\Build\Assets\Scenes\MenuScene.json" />
