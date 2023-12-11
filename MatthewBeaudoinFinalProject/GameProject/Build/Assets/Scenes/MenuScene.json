@@ -1,0 +1,114 @@
+{
+  "AssetManager": {
+    "Assets": [
+      {
+        "GUID": "84jnghu343nfifigr"
+      },
+      {
+        "GUID": "74i3njgj9w83gidie83"
+      },
+      {
+        "GUID": "hryueufhfyeungjrue"
+      }
+    ]
+  },
+  "Scene" : {
+    "Name": "MenuScene",
+    "GUID": "176hty58he987t6y",
+    "IsEnabled": true,
+    "Entities": [
+      {
+        "Name": "MenuText",
+        "GUID": "U9875u4nrbfi38hr",
+        "Transform": {
+          "Position": [ 650.0, 200.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.2, 0.2 ]
+        },
+        "Components": [
+          {
+            "ClassName": "FontSprite",
+            "ClassData": {
+              "Text": "MAIN SCREEN",
+              "Font": "84jnghu343nfifigr"
+            }
+          },
+          {
+            "ClassName": "UiColorer",
+            "ClassData": {
+              "TextColor": {
+                "R": 255,
+                "G": 255,
+                "B": 255,
+                "A": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "Name": "PlayButton",
+        "GUID": "834n5j5u7fj3uj3i",
+        "Transform": {
+          "Position": [ 650.0, 300.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.5, 0.5 ]
+        },
+        "Components": [
+          {
+            "ClassName": "Sprite",
+            "ClassData": {
+              "Texture": "74i3njgj9w83gidie83"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "LoadButton",
+        "GUID": "834n5j5u7fj3uj3i",
+        "Transform": {
+          "Position": [ 650.0, 400.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.5, 0.5 ]
+        },
+        "Components": [
+          {
+            "ClassName": "Sprite",
+            "ClassData": {
+              "Texture": "hryueufhfyeungjrue"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "MenuController",
+        "GUID": "men74u3hyyfuuj2nejf",
+        "Transform": {
+          "Position": [ 0.0, 0.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.2, 0.2 ]
+        },
+        "Components": [
+          {
+            "ClassName": "MainMenu",
+            "ClassData": {
+              "BackgroundColor": {
+                "R": 71,
+                "G": 80,
+                "B": 94,
+                "A": 255
+              },
+              "HighlightColor": {
+                "R": 84,
+                "G": 44,
+                "B": 112,
+                "A": 255
+              },
+              "PlayLevel": "1a9e5171-c7ab-47d4-9af4-d490d1494201"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

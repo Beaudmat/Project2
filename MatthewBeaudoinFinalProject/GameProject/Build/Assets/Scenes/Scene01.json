@@ -1,0 +1,177 @@
+{
+  "AssetManager": {
+    "Assets": [
+      {
+        "GUID": "awooga"
+      },
+      {
+        "GUID": "girl"
+      },
+      {
+        "GUID": "84jnghu343nfifigr"
+      }
+    ]
+  },
+  "Scene": {
+    "Name": "Level01",
+    "GUID": "1a9e5171-c7ab-47d4-9af4-d490d1494201",
+    "IsEnabled": false,
+    "Entities": [
+      {
+        "Name": "Player",
+        "GUID": "uwu",
+        "Transform": {
+          "Position": [ 300.0, 300.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.2, 0.2 ]
+        },
+        "Components": [
+          {
+            "ClassName": "AnimatedSprite",
+            "ClassData": {
+              "Texture": "girl",
+              "SpriteSheet": {
+                "Rows": 1,
+                "Columns": 20,
+                "Frames": 20
+              }
+            }
+          },
+          {
+            "ClassName": "BoxCollider",
+            "ClassData": {}
+          },
+          {
+            "ClassName": "Player",
+            "ClassData": {
+              "TimeBetweenShots": 1.0
+            }
+          }
+        ]
+      },
+      {
+        "Name": "LivesUI",
+        "GUID": "U987y672",
+        "Transform": {
+          "Position": [ 1100.0, 50.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.1, 0.1 ]
+        },
+        "Components": [
+          {
+            "ClassName": "FontSprite",
+            "ClassData": {
+              "Text": "Lives Left: 3",
+              "Font": "84jnghu343nfifigr"
+            }
+          },
+          {
+            "ClassName": "UiColorer",
+            "ClassData": {
+              "TextColor": {
+                "R": 18,
+                "G": 201,
+                "B": 46,
+                "A": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "Name": "KillsUI",
+        "GUID": "U987y672",
+        "Transform": {
+          "Position": [ 1100.0, 150.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.1, 0.1 ]
+        },
+        "Components": [
+          {
+            "ClassName": "FontSprite",
+            "ClassData": {
+              "Text": "Total Kills: 0",
+              "Font": "84jnghu343nfifigr"
+            }
+          },
+          {
+            "ClassName": "UiColorer",
+            "ClassData": {
+              "TextColor": {
+                "R": 245,
+                "G": 59,
+                "B": 7,
+                "A": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "Name": "TimerUI",
+        "GUID": "U987y672",
+        "Transform": {
+          "Position": [ 1100.0, 250.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.1, 0.1 ]
+        },
+        "Components": [
+          {
+            "ClassName": "FontSprite",
+            "ClassData": {
+              "Text": "Time Left: 30",
+              "Font": "84jnghu343nfifigr"
+            }
+          },
+          {
+            "ClassName": "UiColorer",
+            "ClassData": {
+              "TextColor": {
+                "R": 32,
+                "G": 230,
+                "B": 203,
+                "A": 255
+              }
+            }
+          },
+          {
+            "ClassName": "LevelTimer",
+            "ClassData": {
+              "LevelTime": 30.0,
+              "SceneOnTimeout": "176hty58he987t6y"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "HighScoreUI",
+        "GUID": "U987y672",
+        "Transform": {
+          "Position": [ 1100.0, 350.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.1, 0.1 ]
+        },
+        "Components": [
+          {
+            "ClassName": "FontSprite",
+            "ClassData": {
+              "Text": "HighScore: 0",
+              "Font": "84jnghu343nfifigr"
+            }
+          },
+          {
+            "ClassName": "UiColorer",
+            "ClassData": {
+              "TextColor": {
+                "R": 166,
+                "G": 7,
+                "B": 245,
+                "A": 255
+              }
+            }
+          }
+        ]
+      }
+    ]
+   }
+}

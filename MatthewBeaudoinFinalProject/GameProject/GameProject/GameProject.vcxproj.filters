@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Game_Register.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="GameOver.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="UiColorer.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelTimer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameCore.h" />
+    <ClInclude Include="GameOver.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="UiColorer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelTimer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Build\Assets\alien.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\AssetManager.json">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\AudioSystem.json">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\bahnschrift.ttf.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\girl.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\hitEffect03.wav.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\LoadButton.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\Scenes\MenuScene.json">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\Build\Assets\PAPYRUS.TTF.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\PlayButton.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\RenderSettings.json">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\Build\Assets\SceneManager.json">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\Build\Assets\Scenes\Scene01.json">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\Build\Assets\Scenes\Scene02.json">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\Build\Assets\Projectile.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{663dcfa9-0830-4860-8994-70ffff2f24c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{5bd6b3ba-6835-4fe6-a882-3b67ff1c34ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{7e15a0b0-0da1-4a04-9c13-cfcafefa55a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CPP">
+      <UniqueIdentifier>{341be4f7-678e-4ed3-9fdb-84d33f42717e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Build\Assets\alien.png">
+      <Filter>Assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\Build\Assets\hitEffect03.wav">
+      <Filter>Assets</Filter>
+    </Media>
+  </ItemGroup>
+</Project>
