@@ -20,6 +20,8 @@
       <Filter>CPP</Filter>
     </ClCompile>
     <ClCompile Include="MapGenerator.cpp" />
+    <ClCompile Include="Spawner.cpp" />
+    <ClCompile Include="GhostController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameCore.h" />
@@ -40,6 +42,8 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="MapGenerator.h" />
+    <ClInclude Include="Spawner.h" />
+    <ClInclude Include="GhostController.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\AssetManager.json">
@@ -86,6 +90,7 @@
     </None>
     <None Include="..\Build\Assets\Dungeon.png.asset" />
     <None Include="..\Build\Assets\Levels.tmx" />
+    <None Include="..\Build\Assets\Imp.png.asset" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">

@@ -12,6 +12,9 @@
       },
       {
         "GUID": "7in3vdy789jgiu37qyhf939j"
+      },
+      {
+        "GUID": "68h3hfh6di287hfu388cfi3"
       }
     ]
   },
@@ -32,7 +35,7 @@
           {
             "ClassName": "MapGenerator",
             "ClassData": {
-              "LevelFile" : "../Assets/Level1.json"
+              "LevelFile" : "../Assets/Maps/Level1.json"
             }
           }
         ]
@@ -41,9 +44,9 @@
         "Name": "Player",
         "GUID": "uwu",
         "Transform": {
-          "Position": [ 300.0, 300.0 ],
+          "Position": [ 125.0, 100.0 ],
           "Rotation": 0.0,
-          "Scale": [ 0.2, 0.2 ]
+          "Scale": [ 0.15, 0.15 ]
         },
         "Components": [
           {
@@ -65,7 +68,38 @@
             "ClassName": "Player",
             "ClassData": {
               "TimeBetweenShots": 1.0,
-              "ShotSpeed": 250.0
+              "ShotSpeed": 250.0,
+              "Speed": 200.0
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Spawner",
+        "GUID": "7657849293874hf38ijnb2gf3u",
+        "Transform": {
+          "Position": [ 350.0, 600.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.1, 0.1 ]
+        },
+        "Components": [
+          {
+            "ClassName": "Sprite",
+            "ClassData": {
+              "Texture": "68h3hfh6di287hfu388cfi3"
+            }
+          },
+          {
+            "ClassName": "BoxCollider",
+            "ClassData": {
+
+            }
+          },
+          {
+            "ClassName": "Spawner",
+            "ClassData": {
+              "TimeBetweenSpawns": 5.0,
+              "EnemyCountMax": 3
             }
           }
         ]

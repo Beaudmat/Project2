@@ -4,6 +4,8 @@
 #include "LevelTimer.h"
 #include "Bullet.h"
 #include "MapGenerator.h"
+#include "Spawner.h"
+#include "GhostController.h"
 
 void GameRegisterClasses()
 {
@@ -13,5 +15,7 @@ void GameRegisterClasses()
 	REGISTER_TYPECLASS(MainMenu);
 	REGISTER_TYPECLASS(LevelTimer);
 	REGISTER_TYPECLASS(Bullet);
-	REGISTER_TYPECLASS(MapGenerator)
+	REGISTER_TYPECLASS(MapGenerator);
+	REGISTER_TYPECLASS(Spawner);
+	REGISTER_TYPECLASS(GhostController);
 }

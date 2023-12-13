@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Sprite.h"
 #include "Bullet.h"
+#include "GhostController.h"
 
 #define NDEBUG_PLAYER
 
@@ -10,8 +11,8 @@ IMPLEMENT_DYNAMIC_CLASS(Player)
 void Player::Initialize()
 {
     Component::Initialize();
-    start_pos = ownerEntity->GetTransform().position;
-    collider = (BoxCollider*)ownerEntity->GetComponent("BoxCollider");
+    _start_pos = ownerEntity->GetTransform().position;
+    _collider = (BoxCollider*)ownerEntity->GetComponent("BoxCollider");
 }
 void Player::Update() 
 {
@@ -50,34 +51,35 @@ void Player::Update()
         _timeBetweenShots = _timeBetweenShotsMax;
     }
 
-    Vec2 dir = Vec2::Zero;
-    const InputSystem& input = InputSystem::Instance();
+    Vec2 direction = Vec2::Zero;
 
     // Handle horizontal movement
-    if (input.isKeyPressed(SDLK_LEFT) || input.isKeyPressed(SDLK_a)) {
-        dir.x -= 1;
+    if (InputSystem::Instance().isKeyPressed(SDLK_a)) {
+        direction.x -= 1;
     }
-    if (input.isKeyPressed(SDLK_RIGHT) || input.isKeyPressed(SDLK_d)) {
-        dir.x += 1;
+    if (InputSystem::Instance().isKeyPressed(SDLK_d)) {
+        direction.x += 1;
     }
 
     // Handle vertical movement
-    if (input.isKeyPressed(SDLK_UP) || input.isKeyPressed(SDLK_w)) {
-        dir.y -= 1;
+    if (InputSystem::Instance().isKeyPressed(SDLK_w)) {
+        direction.y -= 1;
     }
-    if (input.isKeyPressed(SDLK_DOWN) || input.isKeyPressed(SDLK_s)) {
-        dir.y += 1;
+    if (InputSystem::Instance().isKeyPressed(SDLK_s)) {
+        direction.y += 1;
     }
 
     // Normalize the direction vector if it's not zero
-    if (dir != Vec2::Zero) 
+    if (direction != Vec2::Zero) 
     {
-        dir.Normalize();
+        direction.Normalize();
     }
 
     // Move the player
-    ownerEntity->GetTransform().position += dir * (400 * Time::Instance().DeltaTime());
+    ownerEntity->GetTransform().position += direction * _speed * Time::Instance().DeltaTime();
+    //ownerEntity->GetTransform().position += _direction * _speed * Time::Instance().DeltaTime();
 
+    //Makes sure the player doesn't leave the bounds of the map
     if (ownerEntity->GetTransform().position.x < 35)
     {
         ownerEntity->GetTransform().position.x = 35;
@@ -95,11 +97,19 @@ void Player::Update()
         ownerEntity->GetTransform().position.y = 675;
     }
 
-    for (const auto& other: collider->OnCollisionEnter())
+    for (const auto& other: _collider->OnCollisionEnter())
     {
-	    if (other->GetOwner()->GetName() != "Enemy")
+        GhostController* enemy = (GhostController*)other->GetOwner()->GetComponent("GhostController");
+	    if (enemy == NULL)
 	    {
+            std::cout << "WE TOUCHING LE NON ENEMY" << std::endl;
+            ownerEntity->GetTransform().position -= direction * _speed * 200 * Time::Instance().DeltaTime();
+
             continue;
+        }
+        else
+        {
+            std::cout << "WE TOUCHING LE ENEMY" << std::endl;
         }
     }
 }
@@ -112,7 +122,11 @@ void Player::Load(json::JSON& document)
 
     if (document.hasKey("ShotSpeed"))
     {
-        std::cout << "FOUND Speed" << std::endl;
         _shotSpeed = document["ShotSpeed"].ToFloat();
+    }
+
+    if (document.hasKey("Speed"))
+    {
+        _speed = document["Speed"].ToFloat();
     }
 }

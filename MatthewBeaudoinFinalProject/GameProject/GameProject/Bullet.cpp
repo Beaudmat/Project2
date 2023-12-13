@@ -5,7 +5,7 @@ IMPLEMENT_DYNAMIC_CLASS(Bullet);
 
 void Bullet::Initialize()
 {
-
+	name = "Bullet";
 }
 
 void Bullet::Update()

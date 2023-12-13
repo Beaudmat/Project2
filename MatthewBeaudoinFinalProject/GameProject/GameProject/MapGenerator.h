@@ -10,6 +10,8 @@ class MapGenerator : public Component
 
 	json::JSON _tiles = json::JSON::Array();
 
+	json::JSON _tileIDsWithColliders = json::JSON::Array();
+
 	unsigned int _mapFileGUID = 0;
 
 public:

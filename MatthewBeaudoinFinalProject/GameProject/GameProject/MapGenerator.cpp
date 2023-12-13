@@ -26,6 +26,11 @@ void MapGenerator::Load(json::JSON& document)
 		{
 			_tiles = node["Tiles"];
 		}
+		if (node.hasKey("ColliderIDs"))
+		{
+			std::cout << "FOUND COLLIDER ARRAY" << std::endl;
+			_tileIDsWithColliders = node["ColliderIDs"];
+		}
 		if (node.hasKey("MapTexture"))
 		{
 			_mapFileGUID = GetHashCode(node["MapTexture"].ToString().c_str());
@@ -34,6 +39,7 @@ void MapGenerator::Load(json::JSON& document)
 
 	if (_tiles.length() > 0 && _mapFileGUID != 0)
 	{
+		int howmanyid = 0;
 		//What index in the array we are at
 		int count = 0;
 
@@ -54,7 +60,7 @@ void MapGenerator::Load(json::JSON& document)
 				newTile->GetTransform().Scale(Vec2(1.4, 1.4));
 
 				//Increments X so the next tile is at the right X position
-				x += 44.7;
+				x += 44;
 
 				//Creates a sprite component on the new entity and gives it the Dungeon texture
 				Sprite* sprite = (Sprite*)newTile->CreateComponent("Sprite");
@@ -64,6 +70,20 @@ void MapGenerator::Load(json::JSON& document)
 				* Pulls the TileID from the array and removes 1. Tiled was providing tile id's that were one too high.
 				*/
 				float tileId = _tiles[count++].ToInt() - 1;
+
+				//Checks if the tile should be given a collider based on its ID
+				for (int c = 0; c < _tileIDsWithColliders.length(); c++)
+				{
+					if (tileId == _tileIDsWithColliders[c].ToInt())
+					{
+						BoxCollider* collider = (BoxCollider*)newTile->CreateComponent("BoxCollider");
+						collider->SetSize(32 * collider->GetOwner()->GetTransform().scale.x, 
+							32 * collider->GetOwner()->GetTransform().scale.y);
+						howmanyid++;
+						std::cout << "COLLIDER GIVEN: " << howmanyid << std::endl;
+						break;
+					}
+				}
 
 				//Performs math to grab the X and Y coordinates from the TileID
 				float textureCorX = ((int)tileId % 20);
@@ -77,7 +97,7 @@ void MapGenerator::Load(json::JSON& document)
 			}
 			//Resets X since we are going into a new X row
 			x = 22.4;
-			y += 44.7;
+			y += 44;
 		}
 	}
 }
