@@ -9,6 +9,9 @@
       },
       {
         "GUID": "84jnghu343nfifigr"
+      },
+      {
+        "GUID": "7in3vdy789jgiu37qyhf939j"
       }
     ]
   },
@@ -17,6 +20,23 @@
     "GUID": "1a9e5171-c7ab-47d4-9af4-d490d1494201",
     "IsEnabled": false,
     "Entities": [
+      {
+        "Name": "Map",
+        "GUID": "783798917hg873u3hfi2",
+        "Transform": {
+          "Position": [ 0.0, 0.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.2, 0.2 ]
+        },
+        "Components": [
+          {
+            "ClassName": "MapGenerator",
+            "ClassData": {
+              "LevelFile" : "../Assets/Level1.json"
+            }
+          }
+        ]
+      },
       {
         "Name": "Player",
         "GUID": "uwu",

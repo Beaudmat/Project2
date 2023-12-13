@@ -19,6 +19,7 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>CPP</Filter>
     </ClCompile>
+    <ClCompile Include="MapGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameCore.h" />
@@ -38,6 +39,7 @@
     <ClInclude Include="Bullet.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="MapGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\AssetManager.json">
@@ -82,6 +84,8 @@
     <None Include="..\Build\Assets\Bullet.png.asset">
       <Filter>Assets</Filter>
     </None>
+    <None Include="..\Build\Assets\Dungeon.png.asset" />
+    <None Include="..\Build\Assets\Levels.tmx" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">
