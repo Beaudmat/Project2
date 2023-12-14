@@ -61,6 +61,8 @@ protected:
 
 public:
 
+    void SetName(std::string _name);
+
     /**
      * @brief Loads object data from JSON.
      *

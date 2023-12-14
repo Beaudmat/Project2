@@ -15,6 +15,58 @@
       },
       {
         "GUID": "68h3hfh6di287hfu388cfi3"
+      },
+      {
+        "Name": "Bullet Sprite",
+        "GUID": "8475jni3hfji2e8fhu4"
+      },
+      {
+        "Name": "Ghost Backward Sprite",
+        "GUID": "yh83eqhb3vio863j4"
+      },
+      {
+        "Name": "Ghost Right Facing Sprite",
+        "GUID": "fjni3i74nu298jeunfijo"
+      },
+      {
+        "Name": "Ghost Forward Sprite",
+        "GUID": "mvgqwbbev638hfg74"
+      },
+      {
+        "Name": "Ghost Left Facing Sprite",
+        "GUID": "834qbyijvi6rh42p0duf7"
+      },
+      {
+        "Name": "Witch Backward Sprite",
+        "GUID": "njfbgthiu878efhifnjgthio4eu9fhnj"
+      },
+      {
+        "Name": "Witch Forward Sprite",
+        "GUID": "nbmhko5yi9t48uef7uhdvfnj"
+      },
+      {
+        "Name": "Witch Left Facing Sprite",
+        "GUID": "nh3y47r8fuifwj3hr4yfu8i"
+      },
+      {
+        "Name": "Witch Right Facing Sprite",
+        "GUID": "hfue7y73unj4ghyv73ji4ngr"
+      },
+      {
+        "Name": "Skeleton Backward Sprite",
+        "GUID": "fwefuiytvewriuovnj37hvn46giuvy"
+      },
+      {
+        "Name": "Skeleton Forward Sprite",
+        "GUID": "yh3y6f38ifbg36gfub3u7fy"
+      },
+      {
+        "Name": "Skeleton Left Facing Sprite",
+        "GUID": "6fg47385g37fhfn64hf63i5gb"
+      },
+      {
+        "Name": "Skeleton Right Facing Sprite",
+        "GUID": "mfyb36gfui92y7fh3fyh3fgtfujyf73"
       }
     ]
   },
@@ -35,7 +87,7 @@
           {
             "ClassName": "MapGenerator",
             "ClassData": {
-              "LevelFile" : "../Assets/Maps/Level1.json"
+              "LevelFile": "../Assets/Maps/Level1.json"
             }
           }
         ]
@@ -69,7 +121,7 @@
             "ClassData": {
               "TimeBetweenShots": 1.0,
               "ShotSpeed": 250.0,
-              "Speed": 200.0
+              "Speed": 100.0
             }
           }
         ]
@@ -99,7 +151,33 @@
             "ClassName": "Spawner",
             "ClassData": {
               "TimeBetweenSpawns": 5.0,
-              "EnemyCountMax": 3
+              "EnemyCountMax": 3,
+              "GhostData": {
+                "FrontFacingSprite": "mvgqwbbev638hfg74",
+                "BackFacingSprite": "yh83eqhb3vio863j4",
+                "LeftFacingSprite": "834qbyijvi6rh42p0duf7",
+                "RightFacingSprite": "fjni3i74nu298jeunfijo",
+                "MovementSpeed": 50.0
+              },
+              "WitchData": {
+                "FrontFacingSprite": "nbmhko5yi9t48uef7uhdvfnj",
+                "BackFacingSprite": "njfbgthiu878efhifnjgthio4eu9fhnj",
+                "LeftFacingSprite": "nh3y47r8fuifwj3hr4yfu8i",
+                "RightFacingSprite": "hfue7y73unj4ghyv73ji4ngr",
+                "TimeBetweenShots": 5.0,
+                "ShotSpeed": 100.0,
+                "StopDistance": 200.0,
+                "BulletSprite": "8475jni3hfji2e8fhu4",
+                "MovementSpeed": 50.0
+              },
+              "SkeletonData": {
+                "FrontFacingSprite": "yh3y6f38ifbg36gfub3u7fy",
+                "BackFacingSprite": "fwefuiytvewriuovnj37hvn46giuvy",
+                "LeftFacingSprite": "6fg47385g37fhfn64hf63i5gb",
+                "RightFacingSprite": "mfyb36gfui92y7fh3fyh3fgtfujyf73",
+                "MovementSpeed": 50.0,
+                "StopDistance": 100.0
+              }
             }
           }
         ]

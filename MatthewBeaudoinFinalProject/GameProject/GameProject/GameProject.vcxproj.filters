@@ -15,13 +15,27 @@
     <ClCompile Include="Player.cpp">
       <Filter>CPP</Filter>
     </ClCompile>
-    <ClCompile Include="LevelTimer.cpp" />
     <ClCompile Include="Bullet.cpp">
       <Filter>CPP</Filter>
     </ClCompile>
-    <ClCompile Include="MapGenerator.cpp" />
-    <ClCompile Include="Spawner.cpp" />
-    <ClCompile Include="GhostController.cpp" />
+    <ClCompile Include="GhostController.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelTimer.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="MapGenerator.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="Spawner.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="WitchController.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeletonController.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameCore.h" />
@@ -37,13 +51,27 @@
     <ClInclude Include="UiColorer.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="LevelTimer.h" />
     <ClInclude Include="Bullet.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="MapGenerator.h" />
-    <ClInclude Include="Spawner.h" />
-    <ClInclude Include="GhostController.h" />
+    <ClInclude Include="GhostController.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelTimer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MapGenerator.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="WitchController.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeletonController.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\AssetManager.json">
@@ -88,9 +116,49 @@
     <None Include="..\Build\Assets\Bullet.png.asset">
       <Filter>Assets</Filter>
     </None>
-    <None Include="..\Build\Assets\Dungeon.png.asset" />
     <None Include="..\Build\Assets\Levels.tmx" />
-    <None Include="..\Build\Assets\Imp.png.asset" />
+    <None Include="..\Build\Assets\GhostForward.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\GhostBackward.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\GhostLeft.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\GhostRight.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\Imp.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\Dungeon.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\WitchBackwards.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\WitchFront.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\WitchLeft.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\witchRight.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\SkeletonBackwards.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\SkeletonForward.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\SkeletonLeft.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\SkeletonRight.png.asset">
+      <Filter>Assets</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">

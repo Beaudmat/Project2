@@ -35,3 +35,8 @@ void Object::Load(json::JSON& node)
         uid = GetHashCode(guid.c_str());
     }
 }
+
+void Object::SetName(std::string _name)
+{
+    name = _name;
+}

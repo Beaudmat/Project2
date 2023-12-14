@@ -25,6 +25,8 @@ private:
 	Vec2 _direction = Vec2(0,0);
 
 	float _speed = 50;
+
+	BoxCollider* _collider;
 };
 
 #endif

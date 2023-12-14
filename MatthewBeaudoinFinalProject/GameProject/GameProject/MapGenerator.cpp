@@ -26,10 +26,9 @@ void MapGenerator::Load(json::JSON& document)
 		{
 			_tiles = node["Tiles"];
 		}
-		if (node.hasKey("ColliderIDs"))
+		if (node.hasKey("CollideableID"))
 		{
-			std::cout << "FOUND COLLIDER ARRAY" << std::endl;
-			_tileIDsWithColliders = node["ColliderIDs"];
+			_tileIDsWithColliders = node["CollideableID"];
 		}
 		if (node.hasKey("MapTexture"))
 		{
@@ -39,7 +38,6 @@ void MapGenerator::Load(json::JSON& document)
 
 	if (_tiles.length() > 0 && _mapFileGUID != 0)
 	{
-		int howmanyid = 0;
 		//What index in the array we are at
 		int count = 0;
 
@@ -58,6 +56,7 @@ void MapGenerator::Load(json::JSON& document)
 				newTile->GetTransform().position.x = x;
 				newTile->GetTransform().position.y = y;
 				newTile->GetTransform().Scale(Vec2(1.4, 1.4));
+				newTile->SetName("Wall");
 
 				//Increments X so the next tile is at the right X position
 				x += 44;
@@ -77,10 +76,6 @@ void MapGenerator::Load(json::JSON& document)
 					if (tileId == _tileIDsWithColliders[c].ToInt())
 					{
 						BoxCollider* collider = (BoxCollider*)newTile->CreateComponent("BoxCollider");
-						collider->SetSize(32 * collider->GetOwner()->GetTransform().scale.x, 
-							32 * collider->GetOwner()->GetTransform().scale.y);
-						howmanyid++;
-						std::cout << "COLLIDER GIVEN: " << howmanyid << std::endl;
 						break;
 					}
 				}

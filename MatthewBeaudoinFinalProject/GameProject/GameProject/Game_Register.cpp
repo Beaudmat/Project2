@@ -6,6 +6,8 @@
 #include "MapGenerator.h"
 #include "Spawner.h"
 #include "GhostController.h"
+#include "WitchController.h"
+#include "SkeletonController.h"
 
 void GameRegisterClasses()
 {
@@ -18,4 +20,6 @@ void GameRegisterClasses()
 	REGISTER_TYPECLASS(MapGenerator);
 	REGISTER_TYPECLASS(Spawner);
 	REGISTER_TYPECLASS(GhostController);
+	REGISTER_TYPECLASS(WitchController);
+	REGISTER_TYPECLASS(SkeletonController);
 }

@@ -34,11 +34,12 @@ void Player::Update()
         projectileVector.Normalize();
 
         Entity* testEntity = ownerEntity->GetParentScene()->CreateEntity();
+        Sprite* testSprite = (Sprite*)testEntity->CreateComponent("Sprite");
+        TextureAsset* testAsset = (TextureAsset*)AssetManager::Get().GetAsset("8475jni3hfji2e8fhu4");
+        testEntity->CreateComponent("BoxCollider");
         Bullet* testBullet = (Bullet*)testEntity->CreateComponent("Bullet");
         testBullet->SetDirection(projectileVector);
         testBullet->SetSpeed(_shotSpeed);
-        Sprite* testSprite = (Sprite*)testEntity->CreateComponent("Sprite");
-        TextureAsset* testAsset = (TextureAsset*)AssetManager::Get().GetAsset("8475jni3hfji2e8fhu4");
 
         testSprite->SetTextureAsset(testAsset);
 
@@ -77,7 +78,6 @@ void Player::Update()
 
     // Move the player
     ownerEntity->GetTransform().position += direction * _speed * Time::Instance().DeltaTime();
-    //ownerEntity->GetTransform().position += _direction * _speed * Time::Instance().DeltaTime();
 
     //Makes sure the player doesn't leave the bounds of the map
     if (ownerEntity->GetTransform().position.x < 35)
@@ -97,13 +97,23 @@ void Player::Update()
         ownerEntity->GetTransform().position.y = 675;
     }
 
-    for (const auto& other: _collider->OnCollisionEnter())
+    /*for (const auto& other : _collider->OnCollisionEnter())
     {
         GhostController* enemy = (GhostController*)other->GetOwner()->GetComponent("GhostController");
+        if (other->GetOwner()->GetName() == "Wall")
+        {
+            LOG("WE WALKED INTO A WALL");
+            ownerEntity->GetTransform().position = _previousPosition;
+        }
+        else
+        {
+
+        }
+
 	    if (enemy == NULL)
 	    {
             std::cout << "WE TOUCHING LE NON ENEMY" << std::endl;
-            ownerEntity->GetTransform().position -= direction * _speed * 200 * Time::Instance().DeltaTime();
+            ownerEntity->GetTransform().position -= direction * _speed * Time::Instance().DeltaTime();
 
             continue;
         }
@@ -111,7 +121,23 @@ void Player::Update()
         {
             std::cout << "WE TOUCHING LE ENEMY" << std::endl;
         }
+    }*/
+
+    for (const auto& other : _collider->OnCollisionEnter())
+    {
+        if (other->GetOwner()->GetName() == "Wall")
+        {
+            LOG("WE ARE IN A WALL");
+            ownerEntity->GetTransform().position -= direction * _speed * Time::Instance().DeltaTime();
+            continue;
+        }
     }
+
+    for (const auto& other : _collider->OnCollisionExit())
+    {
+    }
+
+    _previousPosition = ownerEntity->GetTransform().position;
 }
 void Player::Load(json::JSON& document)
 {

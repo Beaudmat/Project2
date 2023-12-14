@@ -16,6 +16,8 @@ class Player : public Component
     float _timeBetweenShotsMax = 5;
     float _shotSpeed = 0;
 
+    Vec2 _previousPosition = Vec2(0, 0);
+
 public:
     void Initialize() override;
 

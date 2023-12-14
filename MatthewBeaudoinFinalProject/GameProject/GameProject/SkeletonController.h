@@ -1,23 +1,23 @@
-// @file: GhostController.h
+// @file: SkeletonController.cpp
 //
-// @brief: Ghosts will chase after the player and destroy themselves on impact damaging the player
+// @brief: Skeletons will move towards the player then stop short and attack
 //
 // @author: Matthew Beaudoin
 // @date: 2023-12-13
 
 #pragma once
-#ifndef _GHOST_CONTROLLER_
-#define _GHOST_CONTROLLER_
+#ifndef _SKELETON_CONTROLLER_
+#define _SKELETON_CONTROLLER_
 
 #include "GameCore.h"
 #include "TextureAsset.h"
 #include "Sprite.h"
 
-class GhostController : public Component
+class SkeletonController : public Component
 {
-	DECLARE_DYNAMIC_DERIVED_CLASS(GhostController, Component);
+	DECLARE_DYNAMIC_DERIVED_CLASS(SkeletonController, Component);
 
-	//Used for referencing the player Entity
+	//Holds onto the player Entity for future reference
 	Entity* _player;
 
 	//Holds the TextureAssets for the different directions
@@ -26,11 +26,12 @@ class GhostController : public Component
 	TextureAsset* _left = nullptr;
 	TextureAsset* _right = nullptr;
 
-	//Used for referencing the Entities Sprite
+	//Holds onto the Entities Sprite for future reference
 	Sprite* _sprite = nullptr;
 
-	//Ghost movement speed
+	//Skeleton movement speed and stop distance
 	float _movementSpeed = 50;
+	float _stopDistance = 200;
 
 public:
 	void Initialize() override;
