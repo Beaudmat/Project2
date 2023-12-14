@@ -1,0 +1,109 @@
+{
+  "AssetManager": {
+    "Assets": [
+      {
+        "Name": "FONT",
+        "GUID": "84jnghu343nfifigr"
+      },
+      {
+        "Name": "Continue Button Sprite",
+        "GUID": "y8ufee8byu2fe8ybhti5im95h4im9"
+      },
+      {
+        "Name": "Save Button Sprite",
+        "GUID": "748g9i7h3yfnduj2u47hfneui3j84"
+      },
+      {
+        "Name": "Quit Button Sprite",
+        "GUID": "36fju8bn3y6f73euyfh7y3hfh747"
+      }
+    ]
+  },
+  "Scene": {
+    "Name": "PauseScene",
+    "GUID": "hyru3ir48hfeij24tuhfei4t3",
+    "IsEnabled": false,
+    "Entities": [
+      {
+        "Name": "MainText",
+        "GUID": "754839485748jfgh38jrfhr738j2i",
+        "Transform": {
+          "Position": [ 650.0, 200.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.6, 0.6 ]
+        },
+        "Components": [
+          {
+            "ClassName": "FontSprite",
+            "ClassData": {
+              "Text": "PAUSED",
+              "Font": "84jnghu343nfifigr"
+            }
+          },
+          {
+            "ClassName": "UiColorer",
+            "ClassData": {
+              "TextColor": {
+                "R": 252,
+                "G": 123,
+                "B": 3,
+                "A": 255
+              }
+            }
+          }
+        ]
+      },
+      {
+        "Name": "ContinueButton",
+        "GUID": "74yfehjwdj3r7h4yfbbfgry4hf7eudefhr7",
+        "Transform": {
+          "Position": [ 650.0, 350.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.5, 0.5 ]
+        },
+        "Components": [
+          {
+            "ClassName": "Sprite",
+            "ClassData": {
+              "Texture": "y8ufee8byu2fe8ybhti5im95h4im9"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "SaveButton",
+        "GUID": "84u7hyfuenrhgyb4fu3jik2dj38fuec",
+        "Transform": {
+          "Position": [ 650.0, 450.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.5, 0.5 ]
+        },
+        "Components": [
+          {
+            "ClassName": "Sprite",
+            "ClassData": {
+              "Texture": "748g9i7h3yfnduj2u47hfneui3j84"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "QuitButton",
+        "GUID": "qu84t5yghfjwkvbf37h8wce",
+        "Transform": {
+          "Position": [ 650.0, 550.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.5, 0.5 ]
+        },
+        "Components": [
+          {
+            "ClassName": "Sprite",
+            "ClassData": {
+              "Texture": "36fju8bn3y6f73euyfh7y3hfh747"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -187,6 +187,7 @@
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Game_Register.cpp" />
     <ClCompile Include="GhostController.cpp" />
+    <ClCompile Include="LevelController.cpp" />
     <ClCompile Include="LevelTimer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="GameCore.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GhostController.h" />
+    <ClInclude Include="LevelController.h" />
     <ClInclude Include="LevelTimer.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MapGenerator.h" />
@@ -216,6 +218,7 @@
     <None Include="..\Build\Assets\AudioSystem.json" />
     <None Include="..\Build\Assets\bahnschrift.ttf.asset" />
     <None Include="..\Build\Assets\Bullet.png.asset" />
+    <None Include="..\Build\Assets\ContinueButton.png.asset" />
     <None Include="..\Build\Assets\Dungeon.png.asset" />
     <None Include="..\Build\Assets\GhostBackward.png.asset" />
     <None Include="..\Build\Assets\GhostForward.png.asset" />
@@ -228,15 +231,19 @@
     <None Include="..\Build\Assets\LoadButton.png.asset" />
     <None Include="..\Build\Assets\PAPYRUS.TTF.asset" />
     <None Include="..\Build\Assets\PlayButton.png.asset" />
+    <None Include="..\Build\Assets\QuitButton.png.asset" />
     <None Include="..\Build\Assets\RenderSettings.json" />
+    <None Include="..\Build\Assets\SaveButton.png.asset" />
     <None Include="..\Build\Assets\SceneManager.json" />
     <None Include="..\Build\Assets\Scenes\MenuScene.json" />
+    <None Include="..\Build\Assets\Scenes\PauseScene.json" />
     <None Include="..\Build\Assets\Scenes\Scene01.json" />
     <None Include="..\Build\Assets\Scenes\Scene02.json" />
     <None Include="..\Build\Assets\SkeletonBackwards.png.asset" />
     <None Include="..\Build\Assets\SkeletonForward.png.asset" />
     <None Include="..\Build\Assets\SkeletonLeft.png.asset" />
     <None Include="..\Build\Assets\SkeletonRight.png.asset" />
+    <None Include="..\Build\Assets\Spawner.png.asset" />
     <None Include="..\Build\Assets\WitchBackwards.png.asset" />
     <None Include="..\Build\Assets\WitchFront.png.asset" />
     <None Include="..\Build\Assets\WitchLeft.png.asset" />

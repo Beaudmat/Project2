@@ -8,6 +8,7 @@
 #include "GhostController.h"
 #include "WitchController.h"
 #include "SkeletonController.h"
+#include "LevelController.h"
 
 void GameRegisterClasses()
 {
@@ -22,4 +23,5 @@ void GameRegisterClasses()
 	REGISTER_TYPECLASS(GhostController);
 	REGISTER_TYPECLASS(WitchController);
 	REGISTER_TYPECLASS(SkeletonController);
+	REGISTER_TYPECLASS(LevelController);
 }

@@ -36,6 +36,9 @@
     <ClCompile Include="SkeletonController.cpp">
       <Filter>CPP</Filter>
     </ClCompile>
+    <ClCompile Include="LevelController.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameCore.h" />
@@ -70,6 +73,9 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="SkeletonController.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelController.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -159,6 +165,19 @@
     <None Include="..\Build\Assets\SkeletonRight.png.asset">
       <Filter>Assets</Filter>
     </None>
+    <None Include="..\Build\Assets\Scenes\PauseScene.json">
+      <Filter>Scenes</Filter>
+    </None>
+    <None Include="..\Build\Assets\QuitButton.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\ContinueButton.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\SaveButton.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\Spawner.png.asset" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">

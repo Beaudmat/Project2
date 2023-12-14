@@ -8,13 +8,11 @@
         "GUID": "girl"
       },
       {
+        "Name": "FONT",
         "GUID": "84jnghu343nfifigr"
       },
       {
         "GUID": "7in3vdy789jgiu37qyhf939j"
-      },
-      {
-        "GUID": "68h3hfh6di287hfu388cfi3"
       },
       {
         "Name": "Bullet Sprite",
@@ -67,6 +65,10 @@
       {
         "Name": "Skeleton Right Facing Sprite",
         "GUID": "mfyb36gfui92y7fh3fyh3fgtfujyf73"
+      },
+      {
+        "Name": "Spawner Sprite",
+        "GUID": "8r4yhfuijo24hufenio2j4fhueyg63r7y8fu9"
       }
     ]
   },
@@ -88,6 +90,12 @@
             "ClassName": "MapGenerator",
             "ClassData": {
               "LevelFile": "../Assets/Maps/Level1.json"
+            }
+          },
+          {
+            "ClassName": "LevelController",
+            "ClassData": {
+              "PauseScene": "hyru3ir48hfeij24tuhfei4t3"
             }
           }
         ]
@@ -132,13 +140,13 @@
         "Transform": {
           "Position": [ 350.0, 600.0 ],
           "Rotation": 0.0,
-          "Scale": [ 0.1, 0.1 ]
+          "Scale": [ 0.4, 0.4 ]
         },
         "Components": [
           {
             "ClassName": "Sprite",
             "ClassData": {
-              "Texture": "68h3hfh6di287hfu388cfi3"
+              "Texture": "8r4yhfuijo24hufenio2j4fhueyg63r7y8fu9"
             }
           },
           {
