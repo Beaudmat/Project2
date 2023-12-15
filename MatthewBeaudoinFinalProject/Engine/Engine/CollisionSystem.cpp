@@ -227,6 +227,7 @@ void CollisionSystem::ResolveCollision(ICollider* col1, ICollider* col2)
 {
 }
 
+//Added in this method. It clears out all reference to a collider in the collisionSystem so that collider can be destroyed
 void CollisionSystem::ClearCollisions(ICollider* removeCollide)
 {
 	std::list<std::pair<ICollider*, ICollider*>> toRemove;

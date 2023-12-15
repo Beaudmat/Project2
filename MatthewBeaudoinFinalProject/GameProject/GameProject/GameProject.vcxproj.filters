@@ -42,8 +42,18 @@
     <ClCompile Include="PauseMenu.cpp">
       <Filter>CPP</Filter>
     </ClCompile>
-    <ClCompile Include="PauseInformationHolder.cpp" />
-    <ClCompile Include="Portal.cpp" />
+    <ClCompile Include="PauseInformationHolder.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="KillCounter.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="Portal.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyHealthModule.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameCore.h" />
@@ -86,8 +96,18 @@
     <ClInclude Include="PauseMenu.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="PauseInformationHolder.h" />
-    <ClInclude Include="Portal.h" />
+    <ClInclude Include="PauseInformationHolder.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="KillCounter.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Portal.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyHealthModule.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\AssetManager.json">
@@ -132,7 +152,6 @@
     <None Include="..\Build\Assets\Bullet.png.asset">
       <Filter>Assets</Filter>
     </None>
-    <None Include="..\Build\Assets\Levels.tmx" />
     <None Include="..\Build\Assets\GhostForward.png.asset">
       <Filter>Assets</Filter>
     </None>
@@ -190,8 +209,12 @@
     <None Include="..\Build\Assets\Spawner.png.asset">
       <Filter>Assets</Filter>
     </None>
-    <None Include="..\Build\Assets\Portal.png.asset" />
-    <None Include="..\Build\Assets\Scenes\Scene03.json" />
+    <None Include="..\Build\Assets\Portal.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\Scenes\Scene03.json">
+      <Filter>Scenes</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">

@@ -7,6 +7,7 @@
 
 #include "GameCore.h"
 #include "SkeletonController.h"
+#include "Bullet.h"
 
 IMPLEMENT_DYNAMIC_CLASS(SkeletonController);
 
@@ -17,6 +18,12 @@ void SkeletonController::Initialize()
 
 	//Holds onto the Entities Sprite for future reference
 	_sprite = (Sprite*)ownerEntity->GetComponent("Sprite");
+
+	//Holds onto the enemy health module for future reference
+	_healthModule = (EnemyHealthModule*)ownerEntity->GetComponent("EnemyHealthModule");
+
+	//Holds onto the box collider for future reference
+	_collider = (BoxCollider*)ownerEntity->GetComponent("BoxCollider");
 }
 
 void SkeletonController::Update()
@@ -53,6 +60,17 @@ void SkeletonController::Update()
 		else
 		{
 			_sprite->SetTextureAsset(_right);
+		}
+	}
+
+	//Checks if the skeleton has collided with a bullet
+	for (const auto& other : _collider->OnCollisionEnter())
+	{
+		if (other->GetOwner()->GetName() == "PlayerBullet")
+		{
+			//Decreases the skeletons health by the damage of the bullet
+			Bullet* playerBullet = (Bullet*)other->GetOwner()->GetComponent("Bullet");
+			_healthModule->DecreaseHealth(playerBullet->GetDamage());
 		}
 	}
 }

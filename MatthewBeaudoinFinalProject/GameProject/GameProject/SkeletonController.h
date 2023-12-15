@@ -12,6 +12,7 @@
 #include "GameCore.h"
 #include "TextureAsset.h"
 #include "Sprite.h"
+#include "EnemyHealthModule.h"
 
 class SkeletonController : public Component
 {
@@ -28,6 +29,12 @@ class SkeletonController : public Component
 
 	//Holds onto the Entities Sprite for future reference
 	Sprite* _sprite = nullptr;
+
+	//Holds onto the enemy health module for future reference
+	EnemyHealthModule* _healthModule = nullptr;
+
+	//Holds onto the collider for future reference
+	BoxCollider* _collider = nullptr;
 
 	//Skeleton movement speed and stop distance
 	float _movementSpeed = 50;

@@ -1,3 +1,13 @@
+// @file: Player.cpp
+//
+// @brief: Player moves around using the WASD Key. Collision will prevent them from walking through walls or enemies.
+// The collision system prevents the player from moving and forces them backwards based on their last direction until
+// they exit the collider. The player can also shoot using the left mouse button. Direction will be determined based
+// on where on the screen the mouse is.
+//
+// @author: Matthew Beaudoin
+// @date: 2023-12-15
+
 #include "GameCore.h"
 #include "Player.h"
 #include "Sprite.h"
@@ -9,63 +19,59 @@ IMPLEMENT_DYNAMIC_CLASS(Player)
 
 void Player::Initialize()
 {
-    Component::Initialize();
+    //Grabs onto the start position for later use
     _start_pos = ownerEntity->GetTransform().position;
-    _collider = (BoxCollider*)ownerEntity->GetComponent("BoxCollider");
 
-    for (int i = 0; i < _bulletPoolSize; i++)
-    {
-        _bullets.push_back(nullptr);
-    }
+    //Grabs the BoxCollider for later reference
+    _collider = (BoxCollider*)ownerEntity->GetComponent("BoxCollider");
 }
 void Player::Update() 
 {
+    //Timer tracking time between shots
     if (_timeBetweenShots > 0)
     {
         _timeBetweenShots -= 1 * Time::Instance().DeltaTime();
     }
 
-    if (InputSystem::Instance().isMouseButtonPressed(SDL_BUTTON_RIGHT))
-    {
-        ownerEntity->RemoveComponent(ownerEntity->GetComponent("BoxCollider"));
-        _collider = nullptr;
-    }
-
+    //If the player clicks the left mouse button and the timer has passed
     if (InputSystem::Instance().isMouseButtonPressed(SDL_BUTTON_LEFT) && _timeBetweenShots <= 0)
     {
-
+        //Grabs the mouse position on screen
         int x, y;
         SDL_GetMouseState(&x, &y);
+        Vec2 clickPoint = Vec2(x, y);
 
-        Vec2 player = ownerEntity->GetTransform().position;
-        Vec2* clickPoint = new Vec2(x, y);
-
-        Vec2 projectileVector = (*clickPoint) - player;
+        //Calculates the direction the fire shot needs to move in
+        Vec2 projectileVector = clickPoint - ownerEntity->GetTransform().position;
         projectileVector.Normalize();
 
-        Entity* testEntity = ownerEntity->GetParentScene()->CreateEntity();
-        Sprite* testSprite = (Sprite*)testEntity->CreateComponent("Sprite");
-        TextureAsset* testAsset = (TextureAsset*)AssetManager::Get().GetAsset("8475jni3hfji2e8fhu4");
-        testEntity->CreateComponent("BoxCollider");
-        Bullet* testBullet = (Bullet*)testEntity->CreateComponent("Bullet");
+        //Creates a new entity and sets information
+        Entity* newEntity = ownerEntity->GetParentScene()->CreateEntity();
+        newEntity->GetTransform().Scale(Vec2(0.2f, 0.2f));
+        newEntity->GetTransform().position = ownerEntity->GetTransform().position;
+        newEntity->SetName("PlayerBullet");
 
+        //Creates a new sprite component for the entity
+        Sprite* bulletSprite = (Sprite*)newEntity->CreateComponent("Sprite");
+        TextureAsset* bulletAsset = (TextureAsset*)AssetManager::Get().GetAsset("8475jni3hfji2e8fhu4");
+        bulletSprite->SetTextureAsset(bulletAsset);
+
+        //Creates a new boxcollider for the entity
+        newEntity->CreateComponent("BoxCollider");
+
+        //Creates a new bullet component for the entity
+        Bullet* testBullet = (Bullet*)newEntity->CreateComponent("Bullet");
         testBullet->SetDirection(projectileVector);
-        testBullet->SetSpeed(_shotSpeed);
+        testBullet->SetSpeed(_shotSpeed); 
 
-        testSprite->SetTextureAsset(testAsset);
-
-        testEntity->GetTransform().scale.x = 0.2f;
-        testEntity->GetTransform().scale.y = 0.2f;
-
-        testEntity->GetTransform().position = ownerEntity->GetTransform().position;
-        
-
+        //Resets the shot timer
         _timeBetweenShots = _timeBetweenShotsMax;
     }
 
+    //Direction the player will move in
     Vec2 direction = Vec2::Zero;
 
-    // Handle horizontal movement
+    // Handles horizontal movement
     if (InputSystem::Instance().isKeyPressed(SDLK_a) && _colliding == false) {
         direction.x -= 1;
     }
@@ -73,7 +79,7 @@ void Player::Update()
         direction.x += 1;
     }
 
-    // Handle vertical movement
+    // Handles vertical movement
     if (InputSystem::Instance().isKeyPressed(SDLK_w) && _colliding == false) {
         direction.y -= 1;
     }
@@ -90,59 +96,37 @@ void Player::Update()
     // Move the player
     ownerEntity->GetTransform().position += direction * _speed * Time::Instance().DeltaTime();
 
-    //Makes sure the player doesn't leave the bounds of the map
-    if (ownerEntity->GetTransform().position.x < 35)
+    //Checks if the player collided with a wall or enemy
+    for (const auto& other : _collider->OnCollisionEnter())
     {
-        ownerEntity->GetTransform().position.x = 35;
-    }
-    if (ownerEntity->GetTransform().position.y < 35)
-    {
-        ownerEntity->GetTransform().position.y = 35;
-    }
-    if (ownerEntity->GetTransform().position.x > 900)
-    {
-        ownerEntity->GetTransform().position.x = 900;
-    }
-    if (ownerEntity->GetTransform().position.y > 675)
-    {
-        ownerEntity->GetTransform().position.y = 675;
-    }
-
-    if (_collider != nullptr)
-    {
-        // Collision for Wallsand Enemies
-        for (const auto& other : _collider->OnCollisionEnter())
+        if (other->GetOwner()->GetName() == "Wall" || other->GetOwner()->GetName() == "Enemy")
         {
-            if (other->GetOwner()->GetName() == "Wall")
+            //Direction on collision will be used to move the player back. It won't accept if its a zero direction
+            if (direction != Vec2::Zero)
             {
-                if (direction != Vec2::Zero)
-                {
-                    _directionOnCollision = direction;
-                }
-                _colliding = true;
-                break;
+                _directionOnCollision = direction;
             }
-        }
 
-        for (const auto& other : _collider->OnCollisionExit())
-        {
-            if (other->GetOwner()->GetName() == "Wall")
-            {
-                _colliding = false;
-                break;
-            }
+            //If were colliding it locks down player movement
+            _colliding = true;
+            break;
         }
-
-        if (_colliding)
-        {
-            ownerEntity->GetTransform().position -= _directionOnCollision * (_speed * 0.25) * Time::Instance().DeltaTime();
-        }
-
-        _previousPosition = ownerEntity->GetTransform().position;
     }
-    else
+
+    //If the player has exited the collision it lets the player regain control of their movement
+    for (const auto& other : _collider->OnCollisionExit())
     {
-        _colliding = false;
+        if (other->GetOwner()->GetName() == "Wall")
+        {
+            _colliding = false;
+            break;
+        }
+    }
+
+    //Moves the player backwards from their last previously good direction vector if they are colliding
+    if (_colliding)
+    {
+        ownerEntity->GetTransform().position -= _directionOnCollision * (_speed * 0.25) * Time::Instance().DeltaTime();
     }
 }
 
@@ -152,7 +136,6 @@ void Player::Load(json::JSON& document)
     {
         _timeBetweenShotsMax = document["TimeBetweenShots"].ToFloat();
     }
-
     if (document.hasKey("ShotSpeed"))
     {
         _shotSpeed = document["ShotSpeed"].ToFloat();
@@ -161,10 +144,5 @@ void Player::Load(json::JSON& document)
     if (document.hasKey("Speed"))
     {
         _speed = document["Speed"].ToFloat();
-    }
-
-    if (document.hasKey("BulletPoolSize"))
-    {
-        _bulletPoolSize = document["BulletPoolSize"].ToInt();
     }
 }

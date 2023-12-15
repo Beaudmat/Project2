@@ -11,6 +11,7 @@
 #include "GhostController.h"
 #include "WitchController.h"
 #include "SkeletonController.h"
+#include "EnemyHealthModule.h"
 
 IMPLEMENT_DYNAMIC_CLASS(Spawner);
 
@@ -38,13 +39,15 @@ void Spawner::Update()
 
 		//Decides what type of enemy will be created
 		int choice = rand() % 3;
-
 		Sprite* enemySprite = (Sprite*)newEnemy->CreateComponent("Sprite");
 
 		//Pointers to point to new generated instances of the enemy types
 		GhostController* ghost = nullptr;
 		WitchController* witch = nullptr;
 		SkeletonController* skeleton = nullptr;
+
+		EnemyHealthModule* enemyHealth = nullptr;
+		json::JSON moduleData = json::JSON::Object();
 
 		switch (choice) 
 		{
@@ -55,6 +58,10 @@ void Spawner::Update()
 					.GetAsset(GetHashCode(_ghostData["FrontFacingSprite"].ToString().c_str())));
 
 				newEnemy->GetTransform().Scale(Vec2(0.2, 0.2));
+
+				enemyHealth = (EnemyHealthModule*)newEnemy->CreateComponent("EnemyHealthModule");
+				moduleData = _ghostData["HealthModuleData"];
+				enemyHealth->Load(moduleData);
 
 				ghost = (GhostController*)newEnemy->CreateComponent("GhostController");
 				//Passes along the Ghost data
@@ -71,6 +78,10 @@ void Spawner::Update()
 
 				newEnemy->CreateComponent("BoxCollider");
 
+				enemyHealth = (EnemyHealthModule*)newEnemy->CreateComponent("EnemyHealthModule");
+				moduleData = _witchData["HealthModuleData"];
+				enemyHealth->Load(moduleData);
+
 				witch = (WitchController*)newEnemy->CreateComponent("WitchController");
 				//Passes along the Witch data
 				witch->Load(_witchData);
@@ -85,6 +96,11 @@ void Spawner::Update()
 				newEnemy->GetTransform().Scale(Vec2(0.4, 0.4));
 
 				newEnemy->CreateComponent("BoxCollider");
+
+				enemyHealth = (EnemyHealthModule*)newEnemy->CreateComponent("EnemyHealthModule");
+				moduleData = _skeletonData["HealthModuleData"];
+				enemyHealth->Load(moduleData);
+				enemyHealth->SetSpawner((Spawner*)ownerEntity->GetComponent("Spawner"));
 
 				skeleton = (SkeletonController*)newEnemy->CreateComponent("SkeletonController");
 				//Passes along Skeleton data
@@ -125,4 +141,9 @@ void Spawner::Load(json::JSON& document)
 	{
 		_skeletonData = document["SkeletonData"];
 	}
+}
+
+void Spawner::EnemyDied()
+{
+	_enemyCount--;
 }

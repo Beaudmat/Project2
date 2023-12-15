@@ -1,3 +1,11 @@
+// @file: Bullet.h
+//
+// @brief: Moves towards the provided position and destroys itself on collisions. Deals damage to the enemies if it
+// collides with one of them. 
+//
+// @author: Matthew Beaudoin
+// @date: 2023-12-15
+
 #pragma once
 #ifndef _BULLET_
 #define _BULLET_
@@ -7,6 +15,18 @@
 class Bullet : public Component
 {
 	DECLARE_DYNAMIC_DERIVED_CLASS(Bullet, Component);
+
+	Vec2 _direction = Vec2(0, 0);
+
+	float _speed = 50;
+
+	//Holds onto the collider for future reference
+	BoxCollider* _collider = nullptr;
+
+	//Tells the bullet to destroy itself
+	bool _destroyBullet = false;
+
+	float _damage = 25;
 
 public:
 
@@ -20,17 +40,7 @@ public:
 
 	void SetSpeed(float speed);
 
-	bool CheckCollision();
-
-private:
-
-	Vec2 _direction = Vec2(0, 0);
-
-	float _speed = 50;
-
-	BoxCollider* _collider = nullptr;
-
-	bool _destroyBullet = false;
+	float GetDamage();
 };
 
 #endif

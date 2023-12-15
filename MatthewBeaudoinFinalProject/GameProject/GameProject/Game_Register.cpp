@@ -11,6 +11,8 @@
 #include "LevelController.h"
 #include "PauseMenu.h"
 #include "Portal.h"
+#include "EnemyHealthModule.h"
+#include "KillCounter.h"
 
 void GameRegisterClasses()
 {
@@ -28,4 +30,6 @@ void GameRegisterClasses()
 	REGISTER_TYPECLASS(LevelController);
 	REGISTER_TYPECLASS(PauseMenu);
 	REGISTER_TYPECLASS(Portal);
+	REGISTER_TYPECLASS(EnemyHealthModule);
+	REGISTER_TYPECLASS(KillCounter);
 }

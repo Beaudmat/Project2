@@ -35,6 +35,9 @@ public:
 	void Update() override;
 
 	void Load(json::JSON& document) override;
+
+	//Decreases the enemyCount
+	void EnemyDied();
 };
 
 #endif
