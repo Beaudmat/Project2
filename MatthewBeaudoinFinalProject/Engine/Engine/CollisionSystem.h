@@ -46,6 +46,8 @@ public:
 	
 	void ResolveCollision(ICollider*, ICollider*);
 
+	void ClearCollisions(ICollider*);
+
 
 protected:
 

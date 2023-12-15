@@ -39,6 +39,11 @@
     <ClCompile Include="LevelController.cpp">
       <Filter>CPP</Filter>
     </ClCompile>
+    <ClCompile Include="PauseMenu.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseInformationHolder.cpp" />
+    <ClCompile Include="Portal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameCore.h" />
@@ -78,6 +83,11 @@
     <ClInclude Include="LevelController.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="PauseMenu.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseInformationHolder.h" />
+    <ClInclude Include="Portal.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\AssetManager.json">
@@ -177,7 +187,11 @@
     <None Include="..\Build\Assets\SaveButton.png.asset">
       <Filter>Assets</Filter>
     </None>
-    <None Include="..\Build\Assets\Spawner.png.asset" />
+    <None Include="..\Build\Assets\Spawner.png.asset">
+      <Filter>Assets</Filter>
+    </None>
+    <None Include="..\Build\Assets\Portal.png.asset" />
+    <None Include="..\Build\Assets\Scenes\Scene03.json" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">

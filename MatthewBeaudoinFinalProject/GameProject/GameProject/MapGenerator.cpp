@@ -56,7 +56,6 @@ void MapGenerator::Load(json::JSON& document)
 				newTile->GetTransform().position.x = x;
 				newTile->GetTransform().position.y = y;
 				newTile->GetTransform().Scale(Vec2(1.4, 1.4));
-				newTile->SetName("Wall");
 
 				//Increments X so the next tile is at the right X position
 				x += 44;
@@ -76,6 +75,7 @@ void MapGenerator::Load(json::JSON& document)
 					if (tileId == _tileIDsWithColliders[c].ToInt())
 					{
 						BoxCollider* collider = (BoxCollider*)newTile->CreateComponent("BoxCollider");
+						newTile->SetName("Wall");
 						break;
 					}
 				}

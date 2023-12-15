@@ -9,6 +9,8 @@
 #include "WitchController.h"
 #include "SkeletonController.h"
 #include "LevelController.h"
+#include "PauseMenu.h"
+#include "Portal.h"
 
 void GameRegisterClasses()
 {
@@ -24,4 +26,6 @@ void GameRegisterClasses()
 	REGISTER_TYPECLASS(WitchController);
 	REGISTER_TYPECLASS(SkeletonController);
 	REGISTER_TYPECLASS(LevelController);
+	REGISTER_TYPECLASS(PauseMenu);
+	REGISTER_TYPECLASS(Portal);
 }

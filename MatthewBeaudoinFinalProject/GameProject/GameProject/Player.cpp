@@ -1,7 +1,6 @@
 #include "GameCore.h"
 #include "Player.h"
 #include "Sprite.h"
-#include "Bullet.h"
 #include "GhostController.h"
 
 #define NDEBUG_PLAYER
@@ -13,17 +12,28 @@ void Player::Initialize()
     Component::Initialize();
     _start_pos = ownerEntity->GetTransform().position;
     _collider = (BoxCollider*)ownerEntity->GetComponent("BoxCollider");
+
+    for (int i = 0; i < _bulletPoolSize; i++)
+    {
+        _bullets.push_back(nullptr);
+    }
 }
 void Player::Update() 
 {
-
     if (_timeBetweenShots > 0)
     {
         _timeBetweenShots -= 1 * Time::Instance().DeltaTime();
     }
 
+    if (InputSystem::Instance().isMouseButtonPressed(SDL_BUTTON_RIGHT))
+    {
+        ownerEntity->RemoveComponent(ownerEntity->GetComponent("BoxCollider"));
+        _collider = nullptr;
+    }
+
     if (InputSystem::Instance().isMouseButtonPressed(SDL_BUTTON_LEFT) && _timeBetweenShots <= 0)
     {
+
         int x, y;
         SDL_GetMouseState(&x, &y);
 
@@ -38,6 +48,7 @@ void Player::Update()
         TextureAsset* testAsset = (TextureAsset*)AssetManager::Get().GetAsset("8475jni3hfji2e8fhu4");
         testEntity->CreateComponent("BoxCollider");
         Bullet* testBullet = (Bullet*)testEntity->CreateComponent("Bullet");
+
         testBullet->SetDirection(projectileVector);
         testBullet->SetSpeed(_shotSpeed);
 
@@ -55,18 +66,18 @@ void Player::Update()
     Vec2 direction = Vec2::Zero;
 
     // Handle horizontal movement
-    if (InputSystem::Instance().isKeyPressed(SDLK_a)) {
+    if (InputSystem::Instance().isKeyPressed(SDLK_a) && _colliding == false) {
         direction.x -= 1;
     }
-    if (InputSystem::Instance().isKeyPressed(SDLK_d)) {
+    if (InputSystem::Instance().isKeyPressed(SDLK_d) && _colliding == false) {
         direction.x += 1;
     }
 
     // Handle vertical movement
-    if (InputSystem::Instance().isKeyPressed(SDLK_w)) {
+    if (InputSystem::Instance().isKeyPressed(SDLK_w) && _colliding == false) {
         direction.y -= 1;
     }
-    if (InputSystem::Instance().isKeyPressed(SDLK_s)) {
+    if (InputSystem::Instance().isKeyPressed(SDLK_s) && _colliding == false) {
         direction.y += 1;
     }
 
@@ -97,48 +108,44 @@ void Player::Update()
         ownerEntity->GetTransform().position.y = 675;
     }
 
-    /*for (const auto& other : _collider->OnCollisionEnter())
+    if (_collider != nullptr)
     {
-        GhostController* enemy = (GhostController*)other->GetOwner()->GetComponent("GhostController");
-        if (other->GetOwner()->GetName() == "Wall")
+        // Collision for Wallsand Enemies
+        for (const auto& other : _collider->OnCollisionEnter())
         {
-            LOG("WE WALKED INTO A WALL");
-            ownerEntity->GetTransform().position = _previousPosition;
+            if (other->GetOwner()->GetName() == "Wall")
+            {
+                if (direction != Vec2::Zero)
+                {
+                    _directionOnCollision = direction;
+                }
+                _colliding = true;
+                break;
+            }
         }
-        else
+
+        for (const auto& other : _collider->OnCollisionExit())
         {
-
+            if (other->GetOwner()->GetName() == "Wall")
+            {
+                _colliding = false;
+                break;
+            }
         }
 
-	    if (enemy == NULL)
-	    {
-            std::cout << "WE TOUCHING LE NON ENEMY" << std::endl;
-            ownerEntity->GetTransform().position -= direction * _speed * Time::Instance().DeltaTime();
-
-            continue;
-        }
-        else
+        if (_colliding)
         {
-            std::cout << "WE TOUCHING LE ENEMY" << std::endl;
+            ownerEntity->GetTransform().position -= _directionOnCollision * (_speed * 0.25) * Time::Instance().DeltaTime();
         }
-    }*/
 
-    for (const auto& other : _collider->OnCollisionEnter())
-    {
-        if (other->GetOwner()->GetName() == "Wall")
-        {
-            LOG("WE ARE IN A WALL");
-            ownerEntity->GetTransform().position -= direction * _speed * Time::Instance().DeltaTime();
-            continue;
-        }
+        _previousPosition = ownerEntity->GetTransform().position;
     }
-
-    for (const auto& other : _collider->OnCollisionExit())
+    else
     {
+        _colliding = false;
     }
-
-    _previousPosition = ownerEntity->GetTransform().position;
 }
+
 void Player::Load(json::JSON& document)
 {
     if (document.hasKey("TimeBetweenShots"))
@@ -154,5 +161,10 @@ void Player::Load(json::JSON& document)
     if (document.hasKey("Speed"))
     {
         _speed = document["Speed"].ToFloat();
+    }
+
+    if (document.hasKey("BulletPoolSize"))
+    {
+        _bulletPoolSize = document["BulletPoolSize"].ToInt();
     }
 }

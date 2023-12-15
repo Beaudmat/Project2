@@ -51,6 +51,12 @@ void GhostController::Update()
 			_sprite->SetTextureAsset(_right);
 		}
 	}
+
+	//Checks if the Ghost has reached the player and destroys it
+	if (Vec2::Distance(_player->GetTransform().position, ownerEntity->GetTransform().position) < 10)
+	{
+		ownerEntity->GetParentScene()->RemoveEntity(ownerEntity->GetGuid());
+	}
 }
 
 void GhostController::Load(json::JSON& document)

@@ -226,3 +226,72 @@ bool CollisionSystem::CircleBoxCollision(ICollider* col1, ICollider* col2) {
 void CollisionSystem::ResolveCollision(ICollider* col1, ICollider* col2)
 {
 }
+
+void CollisionSystem::ClearCollisions(ICollider* removeCollide)
+{
+	std::list<std::pair<ICollider*, ICollider*>> toRemove;
+
+	//Clears Entry Collisions
+	for (const auto& collisionPair : enterCollisions) 
+	{
+		if (collisionPair.first == removeCollide || collisionPair.second == removeCollide)
+		{
+			toRemove.push_back(collisionPair);
+		}
+	}
+
+	for (const auto& collisionPair : toRemove)
+	{
+		enterCollisions.remove(collisionPair);
+	}
+
+	toRemove.clear();
+	
+	//Clears Stay Collisions
+	for (const auto& collisionPair : stayCollisions)
+	{
+		if (collisionPair.first == removeCollide || collisionPair.second == removeCollide)
+		{
+			toRemove.push_back(collisionPair);
+		}
+	}
+
+	for (const auto& collisionPair : toRemove)
+	{
+		stayCollisions.remove(collisionPair);
+	}
+
+	toRemove.clear();
+
+	//Clears Exit Collisions
+	for (const auto& collisionPair : exitCollisions)
+	{
+		if (collisionPair.first == removeCollide || collisionPair.second == removeCollide)
+		{
+			toRemove.push_back(collisionPair);
+		}
+	}
+
+	for (const auto& collisionPair : toRemove)
+	{
+		exitCollisions.remove(collisionPair);
+	}
+
+	toRemove.clear();
+
+	//Clears Exit Collisions
+	for (const auto& collisionPair : ongoingCollisions)
+	{
+		if (collisionPair.first == removeCollide || collisionPair.second == removeCollide)
+		{
+			toRemove.push_back(collisionPair);
+		}
+	}
+
+	for (const auto& collisionPair : toRemove)
+	{
+		ongoingCollisions.erase(collisionPair);
+	}
+
+	toRemove.clear();
+}

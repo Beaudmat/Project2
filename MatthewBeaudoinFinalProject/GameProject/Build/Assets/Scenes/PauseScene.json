@@ -103,6 +103,23 @@
             }
           }
         ]
+      },
+      {
+        "Name": "PauseMenuController",
+        "GUID": "87hyfni38fu7hewunmiof2k398heu",
+        "Transform": {
+          "Position": [ 0.0, 0.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.2, 0.2 ]
+        },
+        "Components": [
+          {
+            "ClassName": "PauseMenu",
+            "ClassData": {
+              "QuitScene": "176hty58he987t6y"
+            }
+          }
+        ]
       }
     ]
   }

@@ -192,7 +192,10 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MapGenerator.cpp" />
+    <ClCompile Include="PauseInformationHolder.cpp" />
+    <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Portal.cpp" />
     <ClCompile Include="SkeletonController.cpp" />
     <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="UiColorer.cpp" />
@@ -207,7 +210,10 @@
     <ClInclude Include="LevelTimer.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MapGenerator.h" />
+    <ClInclude Include="PauseInformationHolder.h" />
+    <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Portal.h" />
     <ClInclude Include="SkeletonController.h" />
     <ClInclude Include="Spawner.h" />
     <ClInclude Include="UiColorer.h" />
@@ -231,6 +237,7 @@
     <None Include="..\Build\Assets\LoadButton.png.asset" />
     <None Include="..\Build\Assets\PAPYRUS.TTF.asset" />
     <None Include="..\Build\Assets\PlayButton.png.asset" />
+    <None Include="..\Build\Assets\Portal.png.asset" />
     <None Include="..\Build\Assets\QuitButton.png.asset" />
     <None Include="..\Build\Assets\RenderSettings.json" />
     <None Include="..\Build\Assets\SaveButton.png.asset" />
@@ -239,6 +246,7 @@
     <None Include="..\Build\Assets\Scenes\PauseScene.json" />
     <None Include="..\Build\Assets\Scenes\Scene01.json" />
     <None Include="..\Build\Assets\Scenes\Scene02.json" />
+    <None Include="..\Build\Assets\Scenes\Scene03.json" />
     <None Include="..\Build\Assets\SkeletonBackwards.png.asset" />
     <None Include="..\Build\Assets\SkeletonForward.png.asset" />
     <None Include="..\Build\Assets\SkeletonLeft.png.asset" />

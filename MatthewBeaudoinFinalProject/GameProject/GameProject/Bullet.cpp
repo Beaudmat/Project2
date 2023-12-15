@@ -5,7 +5,6 @@ IMPLEMENT_DYNAMIC_CLASS(Bullet);
 
 void Bullet::Initialize()
 {
-	name = "Bullet";
 	_collider = (BoxCollider*)ownerEntity->GetComponent("BoxCollider");
 }
 
@@ -15,13 +14,19 @@ void Bullet::Update()
 
 	for (const auto& other : _collider->OnCollisionEnter())
 	{
-		if (other->GetOwner()->GetName() == "Player")
+		if (other->GetOwner()->GetName() == "Enemy")
 		{
-			continue;
+			_destroyBullet = true;
+			break;
 		}
-		else
-		{
-			std::cout << " BULLET LEAVE " << std::endl;
+	}
+
+	if (_destroyBullet)
+	{
+		if (_collider != nullptr) {
+			CollisionSystem::Instance().ClearCollisions((ICollider*)ownerEntity->GetComponent("BoxCollider"));
+			//ownerEntity->RemoveComponent(ownerEntity->GetComponent("BoxCollider"));
+			ownerEntity->GetParentScene()->RemoveEntity(ownerEntity->GetGuid());
 		}
 	}
 }
@@ -42,4 +47,24 @@ void Bullet::SetDirection(Vec2 direction)
 void Bullet::SetSpeed(float speed)
 {
 	_speed = speed;
+}
+
+bool Bullet::CheckCollision()
+{
+	if (_collider == nullptr)
+	{
+		LOG("COLLIDER IS NULL");
+	}
+	else
+	{
+		for (const auto& other : _collider->OnCollisionEnter())
+		{
+			if (other->GetOwner()->GetName() == "Enemy")
+			{
+				LOG("STRUCK ENEMY IN HEAD");
+				return true;
+			}
+		}
+	}
+	return false;
 }

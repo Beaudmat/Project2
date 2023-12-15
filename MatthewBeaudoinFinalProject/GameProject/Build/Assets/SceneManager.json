@@ -4,7 +4,8 @@
     { "GUID": "1a9e5171-c7ab-47d4-9af4-d490d1494201" },
     { "GUID": "45f479c9-f110-43c5-be35-9fbbc5d7d694" },
     { "GUID": "176hty58he987t6y" },
-    { "GUID": "hyru3ir48hfeij24tuhfei4t3" }
+    { "GUID": "hyru3ir48hfeij24tuhfei4t3" },
+    { "GUID": "4923iief93ei3eij76tuygh76tyg" }
   ],
   "AllScenes": [
     {
@@ -22,6 +23,10 @@
     {
       "GUID": "hyru3ir48hfeij24tuhfei4t3",
       "Path": "Scenes/PauseScene.json"
+    },
+    {
+      "GUID": "4923iief93ei3eij76tuygh76tyg",
+      "Path": "Scenes/Scene03.json"
     }
   ]
 }

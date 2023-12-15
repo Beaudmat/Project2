@@ -16,13 +16,13 @@
     ]
   },
   "Scene": {
-    "Name": "Level02",
-    "GUID": "45f479c9-f110-43c5-be35-9fbbc5d7d694",
+    "Name": "Level03",
+    "GUID": "3t4y56uj7i6u5h4g3fg4h5j6h5g4f32df34g5h6",
     "IsEnabled": false,
     "Entities": [
       {
         "Name": "Map",
-        "GUID": "908497rghufj2eghfe2h9uf28h3e",
+        "GUID": "34r5yt6uy6t5re3w2rw34t5ythgef",
         "Transform": {
           "Position": [ 0.0, 0.0 ],
           "Rotation": 0.0,
@@ -32,7 +32,7 @@
           {
             "ClassName": "MapGenerator",
             "ClassData": {
-              "LevelFile": "../Assets/Maps/Level2.json"
+              "LevelFile": "../Assets/Maps/Level3.json"
             }
           },
           {
@@ -45,9 +45,9 @@
       },
       {
         "Name": "Player",
-        "GUID": "9083r78r38u9ifgie7hu83fgeiuh239",
+        "GUID": "sdfgedfgerertpoiukjhmnnb",
         "Transform": {
-          "Position": [ 125.0, 100.0 ],
+          "Position": [ 100.0, 300.0 ],
           "Rotation": 0.0,
           "Scale": [ 0.15, 0.15 ]
         },
@@ -80,9 +80,9 @@
       },
       {
         "Name": "Portal",
-        "GUID": "849hufnio238989jf2oejuvhjgi24",
+        "GUID": "345hrgqfwq3g4y523423ghjghj",
         "Transform": {
-          "Position": [ 395.0, 100.0 ],
+          "Position": [ 575.0, 650.0 ],
           "Rotation": 0.0,
           "Scale": [ 0.4, 0.4 ]
         },
@@ -100,14 +100,14 @@
           {
             "ClassName": "Portal",
             "ClassData": {
-              "NextScene": "3t4y56uj7i6u5h4g3fg4h5j6h5g4f32df34g5h6"
+              "NextScene": "45f479c9-f110-43c5-be35-9fbbc5d7d694"
             }
           }
         ]
       },
       {
         "Name": "LivesUI",
-        "GUID": "bgfy378ui39frb8ug7ghjf3ei",
+        "GUID": "74thnui39kt84j2kr3",
         "Transform": {
           "Position": [ 1100.0, 50.0 ],
           "Rotation": 0.0,
@@ -136,7 +136,7 @@
       },
       {
         "Name": "KillsUI",
-        "GUID": "nbyg3h2jifwv8eh7u3n2iwfo",
+        "GUID": "oki48thunfj2mko39gji",
         "Transform": {
           "Position": [ 1100.0, 150.0 ],
           "Rotation": 0.0,
@@ -165,7 +165,7 @@
       },
       {
         "Name": "TimerUI",
-        "GUID": "gjnhy37fw8uif8u37hyfej",
+        "GUID": "o319r87tgru9i0of123tj4ngruiv",
         "Transform": {
           "Position": [ 1100.0, 250.0 ],
           "Rotation": 0.0,
@@ -201,7 +201,7 @@
       },
       {
         "Name": "HighScoreUI",
-        "GUID": "hngy4u3jikfwoiegr8bu4n",
+        "GUID": "nh3bfyg4th8uj923ikofmevhuyge",
         "Transform": {
           "Position": [ 1100.0, 350.0 ],
           "Rotation": 0.0,

@@ -56,8 +56,6 @@ void Spawner::Update()
 
 				newEnemy->GetTransform().Scale(Vec2(0.2, 0.2));
 
-				newEnemy->CreateComponent("BoxCollider");
-
 				ghost = (GhostController*)newEnemy->CreateComponent("GhostController");
 				//Passes along the Ghost data
 				ghost->Load(_ghostData);

@@ -9,15 +9,6 @@ class MainMenu : public Component
 {
 	DECLARE_DYNAMIC_DERIVED_CLASS(MainMenu, Component);
 
-public:
-	void Initialize() override;
-
-	void Update() override;
-
-	void Load(json::JSON& document) override;
-
-private:
-
 	SDL_Color _backgroundColor = { 0, 0, 0, 255 };
 	SDL_Color _highlightColor = { 55, 142, 153, 255 };
 
@@ -25,6 +16,13 @@ private:
 	Sprite* _loadButton = nullptr;
 
 	unsigned int _playLevel = 0;
+
+public:
+	void Initialize() override;
+
+	void Update() override;
+
+	void Load(json::JSON& document) override;
 };
 
 #endif

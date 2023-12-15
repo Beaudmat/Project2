@@ -5,6 +5,7 @@
         "GUID": "awooga"
       },
       {
+        "Name": "Player Sprite",
         "GUID": "girl"
       },
       {
@@ -69,6 +70,10 @@
       {
         "Name": "Spawner Sprite",
         "GUID": "8r4yhfuijo24hufenio2j4fhueyg63r7y8fu9"
+      },
+      {
+        "Name": "Portal Sprite",
+        "GUID": "p345tgfrd8ikujnh7ujyh2wedfg"
       }
     ]
   },
@@ -129,7 +134,8 @@
             "ClassData": {
               "TimeBetweenShots": 1.0,
               "ShotSpeed": 250.0,
-              "Speed": 100.0
+              "Speed": 100.0,
+              "BulletPoolSize": 10
             }
           }
         ]
@@ -186,6 +192,33 @@
                 "MovementSpeed": 50.0,
                 "StopDistance": 100.0
               }
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Portal",
+        "GUID": "98i5jyithi5y8hkt5h8kti2wdsc2ewdc6khi",
+        "Transform": {
+          "Position": [ 575.0, 600.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.4, 0.4 ]
+        },
+        "Components": [
+          {
+            "ClassName": "Sprite",
+            "ClassData": {
+              "Texture": "p345tgfrd8ikujnh7ujyh2wedfg"
+            }
+          },
+          {
+            "ClassName": "BoxCollider",
+            "ClassData": {}
+          },
+          {
+            "ClassName": "Portal",
+            "ClassData": {
+              "NextScene": "45f479c9-f110-43c5-be35-9fbbc5d7d694"
             }
           }
         ]

@@ -3,6 +3,7 @@
 #define _PLAYER_
 
 #include "GameCore.h"
+#include "Bullet.h"
 
 class Player : public Component
 {
@@ -17,6 +18,12 @@ class Player : public Component
     float _shotSpeed = 0;
 
     Vec2 _previousPosition = Vec2(0, 0);
+    Vec2 _directionOnCollision = Vec2(0, 0);
+    bool _colliding = false;
+
+    std::list<Bullet*> _bullets;
+    std::list<Entity*> _bulletsToDestroy;
+    int _bulletPoolSize = 10;
 
 public:
     void Initialize() override;
