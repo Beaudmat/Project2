@@ -13,8 +13,8 @@ IMPLEMENT_DYNAMIC_CLASS(PlayerHealthModule);
 void PlayerHealthModule::Initialize()
 {
 	//Pulls the LivesCounter for future reference
-	std::list<Entity*> livesEntity = ownerEntity->GetParentScene()->FindEntityByName("LivesUI");
-	_livesUI = (FontSprite*)livesEntity.front()->GetComponent("FontSprite");
+	//std::list<Entity*> livesEntity = ownerEntity->GetParentScene()->FindEntityByName("LivesUI");
+	//_livesUI = (FontSprite*)livesEntity.front()->GetComponent("FontSprite");
 }
 
 void PlayerHealthModule::Update()
@@ -46,5 +46,4 @@ void PlayerHealthModule::Load(json::JSON& document)
 void PlayerHealthModule::DecreaseLives()
 {
 	_lives -= 1;
-	_livesUI->SetText("Lives: " + std::to_string(_lives));
 }

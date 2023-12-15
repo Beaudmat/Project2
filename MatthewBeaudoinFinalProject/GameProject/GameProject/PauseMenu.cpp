@@ -62,7 +62,7 @@ void PauseMenu::Update()
 		_continueButton->SetFilterColor(255, 255, 255, 255);
 	}
 
-	//Checks if player mouse is over the Load Button
+	//Checks if player mouse is over the Save Button
 	if (x < saveButtonPos.x + 115 && x > saveButtonPos.x - 120 && y < saveButtonPos.y + 35 && y > saveButtonPos.y - 45)
 	{
 		_saveButton->SetFilterColor(_highlightColor.r, _highlightColor.g, _highlightColor.b, _highlightColor.a);
@@ -72,7 +72,7 @@ void PauseMenu::Update()
 		_saveButton->SetFilterColor(255, 255, 255, 255);
 	}
 
-	//Checks if player mouse is over the Load Button
+	//Checks if player mouse is over the Quit Button
 	if (x < quitButtonPos.x + 115 && x > quitButtonPos.x - 120 && y < quitButtonPos.y + 35 && y > quitButtonPos.y - 45)
 	{
 		_quitButton->SetFilterColor(_highlightColor.r, _highlightColor.g, _highlightColor.b, _highlightColor.a);

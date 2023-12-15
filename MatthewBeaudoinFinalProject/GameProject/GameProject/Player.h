@@ -36,7 +36,7 @@ class Player : public Component
     //Used for dealing with collisions with walls and enemies
     Vec2 _directionOnCollision = Vec2(0, 0);
     bool _colliding = false;
-    float _collidingTimer = 2;
+    float _collidingTimer = 1;
 
 public:
     void Initialize() override;

@@ -39,7 +39,6 @@ void Spawner::Update()
 
 		//Decides what type of enemy will be created
 		int choice = rand() % 3;
-		choice = 1;
 		Sprite* enemySprite = (Sprite*)newEnemy->CreateComponent("Sprite");
 
 		//Pointers to point to new generated instances of the enemy types

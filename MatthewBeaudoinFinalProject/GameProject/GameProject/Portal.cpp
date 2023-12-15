@@ -27,7 +27,6 @@ void Portal::Update()
 			if (SceneManager::Get().SetActiveScene(_nextScene))
 			{
 				currentScene->isEnabled = false;
-				LOG(SceneManager::Get().GetActiveScene());
 			}
 		}
 	}

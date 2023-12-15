@@ -14,7 +14,7 @@ IMPLEMENT_DYNAMIC_CLASS(LevelController);
 
 void LevelController::Initialize()
 {
-
+	
 }
 
 void LevelController::Update()
@@ -23,9 +23,9 @@ void LevelController::Update()
 	if (InputSystem::Instance().isKeyPressed(SDLK_BACKQUOTE))
 	{
 		Scene* currentScene = SceneManager::Get().GetActiveScene();
+		PauseInformationHolder::Instance().PausedScene(GetHashCode(currentScene->GetGUID().c_str()));
 		if (SceneManager::Get().SetActiveScene(_pauseScene))
 		{
-			PauseInformationHolder::Instance().PausedScene(GetHashCode(ownerEntity->GetParentScene()->GetGUID().c_str()));
 			currentScene->isEnabled = false;
 		}
 	}

@@ -134,6 +134,7 @@ void Player::Update()
     //Moves the player backwards from their last previously good direction vector if they are colliding
     if (_colliding)
     {
+        _collidingTimer -= 1 * Time::Instance().DeltaTime();
         ownerEntity->GetTransform().position -= _directionOnCollision * (_speed * 0.25) * Time::Instance().DeltaTime();
     }
 }

@@ -7,6 +7,7 @@
 
 #include "GameCore.h"
 #include "GhostController.h"
+#include "PlayerHealthModule.h"
 
 IMPLEMENT_DYNAMIC_CLASS(GhostController);
 
@@ -66,6 +67,10 @@ void GhostController::Update()
 	{
 		if (other->GetOwner()->GetName() == "Player")
 		{
+			//Pulls the players health module and decreases their lives
+			PlayerHealthModule* playerModule = (PlayerHealthModule*)_player->GetComponent("PlayerHealthModule");
+			playerModule->DecreaseLives();
+
 			_healthModule->DecreaseToZero();
 		}
 		if (other->GetOwner()->GetName() == "PlayerBullet")
