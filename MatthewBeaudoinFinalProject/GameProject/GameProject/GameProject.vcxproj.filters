@@ -3,9 +3,6 @@
   <ItemGroup>
     <ClCompile Include="Game_Register.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="GameOver.cpp">
-      <Filter>CPP</Filter>
-    </ClCompile>
     <ClCompile Include="MainMenu.cpp">
       <Filter>CPP</Filter>
     </ClCompile>
@@ -54,12 +51,11 @@
     <ClCompile Include="EnemyHealthModule.cpp">
       <Filter>CPP</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyBullet.cpp" />
+    <ClCompile Include="PlayerHealthModule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameCore.h" />
-    <ClInclude Include="GameOver.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="MainMenu.h">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -106,6 +102,10 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="EnemyHealthModule.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBullet.h" />
+    <ClInclude Include="PlayerHealthModule.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>

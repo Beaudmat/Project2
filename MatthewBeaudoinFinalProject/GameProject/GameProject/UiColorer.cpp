@@ -1,3 +1,10 @@
+// @file: UiColorer.cpp
+//
+// @brief: Changes the color for the fontsprite it is attached too
+//
+// @author: Matthew Beaudoin
+// @date: 2023-12-15
+
 #include "GameCore.h"
 #include "UiColorer.h"
 #include "FontSprite.h"
@@ -6,8 +13,10 @@ IMPLEMENT_DYNAMIC_CLASS(UiColorer);
 
 void UiColorer::Initialize()
 {
+	//Pulls the fontsprite its connected too
 	FontSprite* uiElement = (FontSprite*)ownerEntity->GetComponent("FontSprite");
 
+	//Sets the color
 	uiElement->SetFontColor(_textColor.r, _textColor.g, _textColor.b, _textColor.a);
 }
 
@@ -18,6 +27,7 @@ void UiColorer::Update()
 
 void UiColorer::Load(json::JSON& document)
 {
+	//Pulls the color it should set the Font too
 	if (document.hasKey("TextColor"))
 	{
 		json::JSON subObject = document["TextColor"];

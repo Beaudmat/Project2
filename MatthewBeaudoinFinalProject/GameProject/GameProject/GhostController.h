@@ -12,6 +12,7 @@
 #include "GameCore.h"
 #include "TextureAsset.h"
 #include "Sprite.h"
+#include "EnemyHealthModule.h"
 
 class GhostController : public Component
 {
@@ -28,6 +29,17 @@ class GhostController : public Component
 
 	//Used for referencing the Entities Sprite
 	Sprite* _sprite = nullptr;
+
+	//Holds onto the enemy health module for future reference
+	EnemyHealthModule* _healthModule = nullptr;
+
+	//Holds onto the collider for future reference
+	BoxCollider* _collider = nullptr;
+
+	//Used for dealing with collisions with walls and other enemies
+	Vec2 _directionOnCollision = Vec2(0, 0);
+	bool _colliding = false;
+	float _collidingTimer = 2;
 
 	//Ghost movement speed
 	float _movementSpeed = 50;

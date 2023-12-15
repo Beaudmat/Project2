@@ -39,6 +39,7 @@ void Spawner::Update()
 
 		//Decides what type of enemy will be created
 		int choice = rand() % 3;
+		choice = 1;
 		Sprite* enemySprite = (Sprite*)newEnemy->CreateComponent("Sprite");
 
 		//Pointers to point to new generated instances of the enemy types
@@ -59,9 +60,12 @@ void Spawner::Update()
 
 				newEnemy->GetTransform().Scale(Vec2(0.2, 0.2));
 
+				newEnemy->CreateComponent("BoxCollider");
+
 				enemyHealth = (EnemyHealthModule*)newEnemy->CreateComponent("EnemyHealthModule");
 				moduleData = _ghostData["HealthModuleData"];
 				enemyHealth->Load(moduleData);
+				enemyHealth->SetSpawner((Spawner*)ownerEntity->GetComponent("Spawner"));
 
 				ghost = (GhostController*)newEnemy->CreateComponent("GhostController");
 				//Passes along the Ghost data
@@ -81,6 +85,7 @@ void Spawner::Update()
 				enemyHealth = (EnemyHealthModule*)newEnemy->CreateComponent("EnemyHealthModule");
 				moduleData = _witchData["HealthModuleData"];
 				enemyHealth->Load(moduleData);
+				enemyHealth->SetSpawner((Spawner*)ownerEntity->GetComponent("Spawner"));
 
 				witch = (WitchController*)newEnemy->CreateComponent("WitchController");
 				//Passes along the Witch data

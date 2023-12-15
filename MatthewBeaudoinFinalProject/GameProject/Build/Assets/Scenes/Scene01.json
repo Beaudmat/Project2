@@ -132,10 +132,16 @@
           {
             "ClassName": "Player",
             "ClassData": {
-              "TimeBetweenShots": 1.0,
+              "TimeBetweenShots": 0.4,
               "ShotSpeed": 250.0,
-              "Speed": 100.0,
-              "BulletPoolSize": 10
+              "Speed": 100.0
+            }
+          },
+          {
+            "ClassName": "PlayerHealthModule",
+            "ClassData": {
+              "Lives": 3,
+              "MenuScene": "176hty58he987t6y"
             }
           }
         ]
@@ -156,9 +162,65 @@
             }
           },
           {
-            "ClassName": "BoxCollider",
+            "ClassName": "Spawner",
             "ClassData": {
-
+              "TimeBetweenSpawns": 5.0,
+              "EnemyCountMax": 3,
+              "GhostData": {
+                "FrontFacingSprite": "mvgqwbbev638hfg74",
+                "BackFacingSprite": "yh83eqhb3vio863j4",
+                "LeftFacingSprite": "834qbyijvi6rh42p0duf7",
+                "RightFacingSprite": "fjni3i74nu298jeunfijo",
+                "MovementSpeed": 50.0,
+                "HealthModuleData": {
+                  "Health": 25.0,
+                  "PointValue": 100.0
+                }
+              },
+              "WitchData": {
+                "FrontFacingSprite": "nbmhko5yi9t48uef7uhdvfnj",
+                "BackFacingSprite": "njfbgthiu878efhifnjgthio4eu9fhnj",
+                "LeftFacingSprite": "nh3y47r8fuifwj3hr4yfu8i",
+                "RightFacingSprite": "hfue7y73unj4ghyv73ji4ngr",
+                "TimeBetweenShots": 5.0,
+                "ShotSpeed": 100.0,
+                "StopDistance": 200.0,
+                "BulletSprite": "8475jni3hfji2e8fhu4",
+                "MovementSpeed": 50.0,
+                "HealthModuleData": {
+                  "Health": 50.0,
+                  "PointValue": 250.0
+                }
+              },
+              "SkeletonData": {
+                "FrontFacingSprite": "yh3y6f38ifbg36gfub3u7fy",
+                "BackFacingSprite": "fwefuiytvewriuovnj37hvn46giuvy",
+                "LeftFacingSprite": "6fg47385g37fhfn64hf63i5gb",
+                "RightFacingSprite": "mfyb36gfui92y7fh3fyh3fgtfujyf73",
+                "MovementSpeed": 50.0,
+                "StopDistance": 100.0,
+                "HealthModuleData": {
+                  "Health": 100.0,
+                  "PointValue": 400.0
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Spawner",
+        "GUID": "948tuf2ye8g9ikom4o3u78egu3i4",
+        "Transform": {
+          "Position": [ 350.0, 100.0 ],
+          "Rotation": 0.0,
+          "Scale": [ 0.4, 0.4 ]
+        },
+        "Components": [
+          {
+            "ClassName": "Sprite",
+            "ClassData": {
+              "Texture": "8r4yhfuijo24hufenio2j4fhueyg63r7y8fu9"
             }
           },
           {
@@ -311,7 +373,7 @@
           {
             "ClassName": "FontSprite",
             "ClassData": {
-              "Text": "Time Left: 30",
+              "Text": "Time Left: 90",
               "Font": "84jnghu343nfifigr"
             }
           },
@@ -329,7 +391,7 @@
           {
             "ClassName": "LevelTimer",
             "ClassData": {
-              "LevelTime": 30.0,
+              "LevelTime": 90.0,
               "SceneOnTimeout": "176hty58he987t6y"
             }
           }

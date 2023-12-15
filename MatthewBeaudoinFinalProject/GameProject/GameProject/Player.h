@@ -30,12 +30,13 @@ class Player : public Component
 
     //information about the bullets the player fires
     float _timeBetweenShots = 0.5;
-    float _timeBetweenShotsMax = 5;
+    float _timeBetweenShotsMax = 1;
     float _shotSpeed = 0;
 
     //Used for dealing with collisions with walls and enemies
     Vec2 _directionOnCollision = Vec2(0, 0);
     bool _colliding = false;
+    float _collidingTimer = 2;
 
 public:
     void Initialize() override;

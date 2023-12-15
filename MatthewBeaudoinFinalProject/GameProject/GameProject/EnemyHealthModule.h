@@ -41,6 +41,8 @@ public:
 
     void DecreaseHealth(float decrease);
 
+    void DecreaseToZero();
+
     //Enemy doesn't know what spawner it is coming from so it must be set
     void SetSpawner(Spawner* spawner);
 };

@@ -1,3 +1,13 @@
+// @file: MapGenerator.cpp
+//
+// @brief: Reads through a jsonFile containing information about a set of TileID's the user wants to generate. 
+// An array of TileID's and CollideableTileID's are pulled along with the the texture to pull the tiles from. 
+// The MapGenerator calculates the X Y Coordinats on the texture for the tile and compares the TileID to 
+// the CollideableTileID's to see if a collider should be added.
+//
+// @author: Matthew Beaudoin
+// @date: 2023-12-15
+
 #include "GameCore.h"
 #include "MapGenerator.h"
 #include "Sprite.h"
@@ -18,18 +28,22 @@ void MapGenerator::Load(json::JSON& document)
 {
 	if (document.hasKey("LevelFile"))
 	{
+		//Opens the jsonFile with the tile information
 		std::ifstream inputStream(document["LevelFile"].ToString());
 		std::string str((std::istreambuf_iterator<char>(inputStream)), std::istreambuf_iterator<char>());
 		json::JSON node = json::JSON::Load(str);
 
+		//The Tile ID's
 		if (node.hasKey("Tiles"))
 		{
 			_tiles = node["Tiles"];
 		}
+		//Tiles that need to have a collider added
 		if (node.hasKey("CollideableID"))
 		{
 			_tileIDsWithColliders = node["CollideableID"];
 		}
+		//Texture we pull the Tiles from
 		if (node.hasKey("MapTexture"))
 		{
 			_mapFileGUID = GetHashCode(node["MapTexture"].ToString().c_str());
@@ -38,7 +52,7 @@ void MapGenerator::Load(json::JSON& document)
 
 	if (_tiles.length() > 0 && _mapFileGUID != 0)
 	{
-		//What index in the array we are at
+		//What index in the TileID array we are at
 		int count = 0;
 
 		//Position for the next Tile to be generated at

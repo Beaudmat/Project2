@@ -13,11 +13,12 @@
 #include "Portal.h"
 #include "EnemyHealthModule.h"
 #include "KillCounter.h"
+#include "EnemyBullet.h"
+#include "PlayerHealthModule.h"
 
 void GameRegisterClasses()
 {
 	REGISTER_TYPECLASS(Player);
-	REGISTER_TYPECLASS(GameOver);
 	REGISTER_TYPECLASS(UiColorer);
 	REGISTER_TYPECLASS(MainMenu);
 	REGISTER_TYPECLASS(LevelTimer);
@@ -32,4 +33,6 @@ void GameRegisterClasses()
 	REGISTER_TYPECLASS(Portal);
 	REGISTER_TYPECLASS(EnemyHealthModule);
 	REGISTER_TYPECLASS(KillCounter);
+	REGISTER_TYPECLASS(EnemyBullet);
+	REGISTER_TYPECLASS(PlayerHealthModule);
 }

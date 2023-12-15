@@ -33,7 +33,7 @@ void SkeletonController::Update()
 	direction.Normalize();
 
 	//Move towards the player until the stop distance is reached
-	if (Vec2::Distance(_player->GetTransform().position, ownerEntity->GetTransform().position) > _stopDistance)
+	if (Vec2::Distance(_player->GetTransform().position, ownerEntity->GetTransform().position) > _stopDistance && !_colliding)
 	{
 		//Moves the ghost in the direction of the player
 		ownerEntity->GetTransform().position += direction * _movementSpeed * Time::Instance().DeltaTime();
@@ -72,6 +72,42 @@ void SkeletonController::Update()
 			Bullet* playerBullet = (Bullet*)other->GetOwner()->GetComponent("Bullet");
 			_healthModule->DecreaseHealth(playerBullet->GetDamage());
 		}
+		if (other->GetOwner()->GetName() == "Wall" || other->GetOwner()->GetName() == "Enemy")
+		{
+			//Direction on collision will be used to move the skeleton back. It won't accept if its a zero direction
+			if (direction != Vec2::Zero)
+			{
+				_directionOnCollision = direction;
+			}
+
+			//If were colliding it locks down skeleton movement
+			_colliding = true;
+		}
+	}
+
+	//If the skeleton has exited the collision it lets the skeleton regain control of their movement
+	for (const auto& other : _collider->OnCollisionExit())
+	{
+		if (other->GetOwner()->GetName() == "Wall" || other->GetOwner()->GetName() == "Enemy")
+		{
+			_colliding = false;
+			_collidingTimer = 2;
+			break;
+		}
+	}
+
+	//Makes sure the skeleton doesn't get stuck backing up
+	if (_collidingTimer <= 0)
+	{
+		_colliding = false;
+		_collidingTimer = 2;
+	}
+
+	//Moves the skeleton backwards from their last previously good direction vector if they are colliding
+	if (_colliding)
+	{
+		_collidingTimer -= 1 * Time::Instance().DeltaTime();
+		ownerEntity->GetTransform().position -= _directionOnCollision * (_movementSpeed * 0.25) * Time::Instance().DeltaTime();
 	}
 }
 

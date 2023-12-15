@@ -1,3 +1,11 @@
+// @file: PauseMenu.h
+//
+// @brief: Pulls the buttons for the pause menu. Tracks the players mouse and if it goes over top of the buttons they
+// are highlighted. Sends the player to the correct scene if the button is clicked.
+//
+// @author: Matthew Beaudoin
+// @date: 2023-12-15
+
 #pragma once
 #ifndef _PAUSE_MENU_
 #define _PAUSE_MENU_
@@ -11,13 +19,13 @@ class PauseMenu : public Component
 
     SDL_Color _highlightColor = { 55, 142, 153, 255 };
 
+    //References to the buttons in the Pause Scene
     Sprite* _continueButton = nullptr;
     Sprite* _saveButton = nullptr;
     Sprite* _quitButton = nullptr;
 
+    //Scene to return to when the quit button is hit
     unsigned int _quitScene = 0;
-
-    unsigned int _returnScene = 0;
 
 public:
     void Initialize() override;

@@ -1,3 +1,11 @@
+// @file: MainMenu.cpp
+//
+// @brief: Checks for the mouse position on screen in the main menu. If the player goes over a button it highlights it,
+// if they click on a button it sends the player to the correct scene.
+//
+// @author: Matthew Beaudoin
+// @date: 2023-12-15
+
 #include "GameCore.h"
 #include "MainMenu.h"
 #include "Entity.h"
@@ -34,7 +42,10 @@ void MainMenu::Update()
 	//Checks if the players mouse is over the Play Button
 	if (x < playButtonPos.x + 115 && x > playButtonPos.x - 120 && y < playButtonPos.y + 35 && y > playButtonPos.y - 45)
 	{
+		//Highlights the button
 		_playButton->SetFilterColor(_highlightColor.r, _highlightColor.g, _highlightColor.b, _highlightColor.a);
+
+		//Sends the player to the first level
 		if (InputSystem::Instance().isMouseButtonPressed(SDL_BUTTON_LEFT))
 		{
 			Scene* currentScene = SceneManager::Get().GetActiveScene();
@@ -46,6 +57,7 @@ void MainMenu::Update()
 	}
 	else
 	{
+		//Unhighlights the button
 		_playButton->SetFilterColor(255, 255, 255, 255);
 	}
 

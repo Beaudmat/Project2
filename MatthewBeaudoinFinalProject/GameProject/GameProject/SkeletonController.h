@@ -36,6 +36,11 @@ class SkeletonController : public Component
 	//Holds onto the collider for future reference
 	BoxCollider* _collider = nullptr;
 
+	//Used for dealing with collisions with walls and other enemies
+	Vec2 _directionOnCollision = Vec2(0, 0);
+	bool _colliding = false;
+	float _collidingTimer = 2;
+
 	//Skeleton movement speed and stop distance
 	float _movementSpeed = 50;
 	float _stopDistance = 200;

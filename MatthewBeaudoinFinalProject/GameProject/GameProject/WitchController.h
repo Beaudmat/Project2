@@ -12,6 +12,7 @@
 #include "GameCore.h"
 #include "TextureAsset.h"
 #include "Sprite.h"
+#include "EnemyHealthModule.h"
 
 class WitchController : public Component
 {
@@ -31,6 +32,17 @@ class WitchController : public Component
 
 	//Holds the TextureAssets for the Bullet
 	TextureAsset* _bullet = nullptr;
+
+	//Holds onto the enemy health module for future reference
+	EnemyHealthModule* _healthModule = nullptr;
+
+	//Holds onto the collider for future reference
+	BoxCollider* _collider = nullptr;
+
+	//Used for dealing with collisions with walls and other enemies
+	Vec2 _directionOnCollision = Vec2(0, 0);
+	bool _colliding = false;
+	float _collidingTimer = 2;
 
 	//Time between bullet shots
 	float _timeBetweenShotsMax = 5;

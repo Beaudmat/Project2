@@ -1,3 +1,11 @@
+// @file: PauseMenu.cpp
+//
+// @brief: Pulls the buttons for the pause menu. Tracks the players mouse and if it goes over top of the buttons they
+// are highlighted. Sends the player to the correct scene if the button is clicked.
+//
+// @author: Matthew Beaudoin
+// @date: 2023-12-15
+
 #include "GameCore.h"
 #include "PauseMenu.h"
 #include "PauseInformationHolder.h"
@@ -42,6 +50,7 @@ void PauseMenu::Update()
 		if (InputSystem::Instance().isMouseButtonPressed(SDL_BUTTON_LEFT))
 		{
 			Scene* currentScene = SceneManager::Get().GetActiveScene();
+			//Pulls the sceen that was paused from the PauseInformationHolder singleton
 			if (SceneManager::Get().SetActiveScene(PauseInformationHolder::Instance().GetPausedScene()))
 			{
 				currentScene->isEnabled = false;
@@ -88,9 +97,4 @@ void PauseMenu::Load(json::JSON& document)
 	{
 		_quitScene = GetHashCode(document["QuitScene"].ToString().c_str());
 	}
-}
-
-void PauseMenu::SetSceneToReturn(unsigned int scene)
-{
-	_returnScene = scene;
 }

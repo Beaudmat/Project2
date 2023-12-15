@@ -52,6 +52,11 @@ void EnemyHealthModule::DecreaseHealth(float decrease)
 	_health -= decrease;
 }
 
+void EnemyHealthModule::DecreaseToZero()
+{
+	_health = 0;
+}
+
 //Enemy doesn't know what spawner its coming from so it must be passed
 void EnemyHealthModule::SetSpawner(Spawner* spawner)
 {

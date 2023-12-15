@@ -116,11 +116,19 @@ void Player::Update()
     //If the player has exited the collision it lets the player regain control of their movement
     for (const auto& other : _collider->OnCollisionExit())
     {
-        if (other->GetOwner()->GetName() == "Wall")
+        if (other->GetOwner()->GetName() == "Wall" || other->GetOwner()->GetName() == "Enemy")
         {
             _colliding = false;
+            _collidingTimer = 2;
             break;
         }
+    }
+
+    //Makes sure the player doesn't get stuck backing up
+    if (_collidingTimer <= 0)
+    {
+        _colliding = false;
+        _collidingTimer = 2;
     }
 
     //Moves the player backwards from their last previously good direction vector if they are colliding
